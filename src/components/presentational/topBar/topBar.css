@@ -221,7 +221,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.946);
+  background-color: rgba(0, 0, 0, 0.962);
   z-index: 9999;
   overflow: hidden;
 }
