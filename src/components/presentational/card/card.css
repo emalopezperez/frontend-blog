@@ -1,0 +1,54 @@
+.card-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 330px;
+  height: 440px;
+  border-radius: 5px;
+  border: solid 1px black;
+}
+
+.card-container article{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+section article h3{
+  display: flex;
+  justify-content: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+section article img{
+  width: 250px;
+  height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+section article p{
+  width: 250px;
+  font-family: "Varela Round", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7; 
+  -webkit-box-orient: vertical;
+}
+
+section article button{
+  background-color: black;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+}
