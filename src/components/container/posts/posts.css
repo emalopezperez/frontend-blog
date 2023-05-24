@@ -6,3 +6,9 @@
   margin: 30px;
   
 }
+
+@media (max-width: 767px) {
+  .posts{
+    gap: 40px;
+  }
+}

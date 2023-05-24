@@ -2,12 +2,26 @@ import { useState } from "react";
 import "./topBar.css";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import Modal from "../modal/Modal";
+import Auth from "../auth/Auth";
 
 const TopBar = () => {
+  const [sowModal, setSowModal] = useState(false);
+  const [openlogin, setOpenLogin] = useState(false);
   const [navMobilOpen, setNavMobilOpen] = useState(false);
 
   const handleOnClick = () => {
     setNavMobilOpen(!navMobilOpen);
+  };
+
+  const openModalLogin = () => {
+    setOpenLogin(true);
+    setSowModal(true);
+  };
+
+  const openModalRegistrarse = () => {
+    setSowModal(true);
+    setOpenLogin(false);
   };
 
   return (
@@ -26,18 +40,22 @@ const TopBar = () => {
           </li>
         </section>
 
-        <ul className="top-center-list">
+        <nav className="top-center-list">
           <li className="">Inicio</li>
           <li className="">Nosotros</li>
           <li className="">Recursos</li>
           <li className="">Contacto</li>
           <li className="">Escribir</li>
-        </ul>
+        </nav>
 
-        <ul className="top-right">
-          <li className="top-list-item">Login</li>
-          <li className="top-list-item">Registrarse</li>
-        </ul>
+        <nav className="top-right">
+          <button onClick={openModalLogin} className="top-list-item">
+            Login
+          </button>
+          <button onClick={openModalRegistrarse} className="top-list-item">
+            Registrarse
+          </button>
+        </nav>
       </nav>
 
       {/* Mobil */}
@@ -65,18 +83,18 @@ const TopBar = () => {
             </button>
           </section>
 
-          <ul className="top-center-list">
+          <nav className="top-center-list">
             <li className="top-list-item">Home</li>
             <li className="top-list-item">About</li>
             <li className="top-list-item">Recursos</li>
             <li className="top-list-item">Contact</li>
             <li className="top-list-item">Write</li>
-          </ul>
+          </nav>
 
-          <ul className="top-right ">
-            <li className="top-list-item nav-open">Login</li>
+          <nav className="top-right ">
+            <button className="top-list-item nav-open">Login</button>
             <li className="top-list-item nav-open">Registrarse</li>
-          </ul>
+          </nav>
 
           <section className="networks-containers">
             <li className="topIcon ">
@@ -91,6 +109,10 @@ const TopBar = () => {
           </section>
         </nav>
       )}
+
+      <Modal sowModal={sowModal } setSowModal={setSowModal} className='modal'>
+        <Auth setSowModal={setSowModal} openModalLogin={openlogin} />
+      </Modal>
     </>
   );
 };

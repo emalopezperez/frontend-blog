@@ -6,12 +6,19 @@
 }
 
 .cards {
-  background-color: #f1f1f1;
-  height: 100%;
+  
 }
 
 .aside {
   background-color: #171717;
   padding: 20px;
-  height: 100%px;
+ 
+}
+
+@media (max-width: 767px) {
+  .container {
+    display: grid;
+    grid-template-columns: 4fr;
+    margin-top: 20px;
+  }
 }
