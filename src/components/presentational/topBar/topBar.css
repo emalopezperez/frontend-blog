@@ -45,16 +45,18 @@ li {
   padding: 5px;
   font-size: 20px;
   border: solid 1px black;
+  cursor: pointer;
+  background-color: white;
+}
+
+.top-right .top-list-item:hover{
+  background-color: rgb(242, 236, 236);
 }
 
 .top-right .nav-open {
   border: solid 1px white;
 }
 
-.top-list-item:hover {
-  background-color: rgb(193, 189, 189);
-  cursor: pointer;
-}
 
 /* Dispositivos móviles */
 .top-movil {

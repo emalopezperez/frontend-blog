@@ -49,7 +49,7 @@ const TopBar = () => {
         </nav>
 
         <nav className="top-right">
-          <button onClick={openModalLogin} className="top-list-item">
+          <button onClick={openModalLogin} className="top-list-item ">
             Login
           </button>
           <button onClick={openModalRegistrarse} className="top-list-item">
@@ -91,9 +91,13 @@ const TopBar = () => {
             <li className="top-list-item">Write</li>
           </nav>
 
-          <nav className="top-right ">
-            <button className="top-list-item nav-open">Login</button>
-            <li className="top-list-item nav-open">Registrarse</li>
+          <nav className="top-right">
+            <button onClick={openModalLogin} className="top-list-item ">
+              Login
+            </button>
+            <button onClick={openModalRegistrarse} className="top-list-item">
+              Registrarse
+            </button>
           </nav>
 
           <section className="networks-containers">
@@ -110,7 +114,7 @@ const TopBar = () => {
         </nav>
       )}
 
-      <Modal sowModal={sowModal } setSowModal={setSowModal} className='modal'>
+      <Modal sowModal={sowModal} setSowModal={setSowModal} className="modal">
         <Auth setSowModal={setSowModal} openModalLogin={openlogin} />
       </Modal>
     </>

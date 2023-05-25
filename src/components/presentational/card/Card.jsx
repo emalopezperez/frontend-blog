@@ -10,7 +10,7 @@ const Card = ({ post, imageSrc }) => {
         <h3>{titulo}</h3>
         <img src={imageSrc} alt="" />
         <p>{contenido}</p>
-        <button>Leer mas ...</button>
+        <button className="button2">Leer mas ...</button>
       </article>
     </section>
   );

@@ -1,10 +1,11 @@
 import Home from "./pages/home";
+import AuthState from "./context/auth/authState";
 
 function App() {
   return (
-    <div>
+    <AuthState>
       <Home />
-    </div>
+    </AuthState>
   );
 }
 
