@@ -5,13 +5,13 @@ const Login = () => {
   const AuthContext = useContext(authContext);
   const { login } = AuthContext;
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (username.length <= 3) {
+    if (email.length <= 3) {
       console.log("nombre muy corto");
 
       return;
@@ -24,13 +24,13 @@ const Login = () => {
     }
 
     let data = {
-      email: username,
+      email: email,
       password: password,
     };
 
     login(data);
 
-    setUsername("");
+    setEmail("");
     setPassword("");
   };
 
@@ -39,14 +39,14 @@ const Login = () => {
       <p className="title">Login</p>
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">
-          <label>Username</label>
+          <label>Email</label>
           <input
             type="text"
-            name="username"
-            id="username"
+            name="email"
+            id="email"
             placeholder=""
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
 

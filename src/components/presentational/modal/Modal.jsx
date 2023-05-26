@@ -6,7 +6,7 @@ import { RiCloseLine } from "react-icons/ri";
 
 const Modal = ({ sowModal, setSowModal, children }) => {
   const AuthContext = useContext(authContext);
-  const { autenticado } = AuthContext;
+  const { autenticado, registrado } = AuthContext;
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -15,11 +15,11 @@ const Modal = ({ sowModal, setSowModal, children }) => {
   };
 
   useEffect(() => {
-    if (autenticado) {
+    if (autenticado || registrado) {
       setSowModal(false);
     }
-  }, [autenticado]);
-  
+  }, [autenticado, registrado]);
+
   return (
     <>
       {sowModal ? (
@@ -27,7 +27,6 @@ const Modal = ({ sowModal, setSowModal, children }) => {
           <button onClick={click} className="modal-close">
             <RiCloseLine size={20} />
           </button>
-
           <div className="modal-form">{children}</div>
         </section>
       ) : (

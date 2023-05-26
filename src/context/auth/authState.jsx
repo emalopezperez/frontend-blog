@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 const AuthState = ({ children }) => {
   const [token, setToken] = useState("");
   const [autenticado, setAutenticado] = useState(false);
+  const [registrado, setRegistrado] = useState(false);
 
   useEffect(() => {
     const storedToken = Cookies.get("token");
@@ -54,6 +55,29 @@ const AuthState = ({ children }) => {
     setAutenticado(false);
   };
 
+  const registrarse = async (data) => {
+    const apiUrl = "http://localhost:3001/api/auth";
+
+    console.log(data);
+
+    try {
+      const response = await fetch(`${apiUrl}/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const responseData = await response.json();
+
+      if (responseData.token) {
+        setRegistrado(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <authContext.Provider
       value={{
@@ -61,6 +85,8 @@ const AuthState = ({ children }) => {
         autenticado,
         login,
         logout,
+        registrarse,
+        registrado
       }}>
       {children}
     </authContext.Provider>
