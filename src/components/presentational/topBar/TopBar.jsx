@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import "./topBar.css";
 import authContext from "../../../context/auth/authContext";
 import { BsFillPersonLinesFill } from "react-icons/bs";
@@ -45,11 +46,15 @@ const TopBar = () => {
         </section>
 
         <nav className="top-center-list">
-          <li className="">Inicio</li>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
           <li className="">Nosotros</li>
           <li className="">Recursos</li>
           <li className="">Contacto</li>
-          <li className="">Escribir</li>
+          <li>
+            <Link to="/escribir-blog">Escribir</Link>
+          </li>
         </nav>
 
         {autenticado ? (
@@ -57,7 +62,11 @@ const TopBar = () => {
             <button onClick={logout} className="top-list-item ">
               logout
             </button>
-            <img src="/public/img/icons/user.jpg" alt="user" className="icon-user"/>
+            <img
+              src="/public/img/icons/user.jpg"
+              alt="user"
+              className="icon-user"
+            />
           </nav>
         ) : (
           <nav className="top-right">
