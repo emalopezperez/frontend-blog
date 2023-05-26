@@ -57,6 +57,11 @@ li {
   border: solid 1px white;
 }
 
+.icon-user{
+  width: 33px;
+  border-radius: 100%;
+  cursor: pointer;
+}
 
 /* Dispositivos móviles */
 .top-movil {
