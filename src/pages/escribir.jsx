@@ -1,14 +1,13 @@
-import TopBar from "../components/presentational/topBar/TopBar"
-import Dropzone from "../components/presentational/dropzone/Dropzone"
-
+import TopBar from "../components/presentational/topBar/TopBar";
+import Write from "../components/presentational/write/Write";
 
 const Escribir = () => {
   return (
     <main>
-      <TopBar/>
-      <Dropzone/>
+      <TopBar />
+      <Write />
     </main>
-  )
-}
+  );
+};
 
-export default Escribir
+export default Escribir;

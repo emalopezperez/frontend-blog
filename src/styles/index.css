@@ -1,10 +1,11 @@
-* {
+
+html,
+body {
+  height: 100%;
   margin: 0;
-padding: 0%;
-box-sizing: content-box;
+  padding: 0;
+  box-sizing: content-box;
 }
-
-
 
 h1,
 h2,
