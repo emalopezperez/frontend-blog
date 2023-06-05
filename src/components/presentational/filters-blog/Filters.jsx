@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import postsContext from "../../../context/posts/postsContext";
 import "./filters.css";
 
@@ -7,6 +7,7 @@ const Filters = () => {
   const { searchPosts } = PostsContext;
 
   const [searchText, setSearchText] = useState("");
+  const [filter, setFilter] = useState("");
 
   const handleSearchInputChange = (event) => {
     setSearchText(event.target.value);
@@ -14,34 +15,39 @@ const Filters = () => {
 
   const handleSearchButtonClick = () => {
     searchPosts(searchText);
+
+    setSearchText("");
   };
+
+  useEffect(() => {
+    if (filter) {
+      searchPosts(filter);
+    }
+  }, [filter]);
 
   return (
     <nav className="container-filters">
       <section className="container-category">
-        <button className="filter-all">
+        <button onClick={() => setFilter("Javascript")} className="filter-all">
           <span>All</span>
         </button>
-        <button>
+        <button onClick={() => setFilter("Javascript")}>
           <span>Javascript</span>
         </button>
-        <button>
+        <button onClick={() => setFilter("css")}>
           <span>CSS</span>
         </button>
-        <button>
+        <button onClick={() => setFilter("react")}>
           <span>React</span>
         </button>
-        <button>
+        <button onClick={() => setFilter("next")}>
           <span>Next</span>
-        </button>
-        <button>
-          <span>Node</span>
         </button>
       </section>
       <div className="search-container">
         <input
           type="search"
-          placeholder="Buscar post..."
+          placeholder="Buscar articulo..."
           value={searchText}
           onChange={handleSearchInputChange}
         />

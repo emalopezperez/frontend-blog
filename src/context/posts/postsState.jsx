@@ -8,7 +8,7 @@ const PostsState = ({ children }) => {
   const { token } = AuthContext;
 
   const [postDelete, setPostDelete] = useState(false);
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState([]);
 
   const crearPosts = async (file, data) => {
     const formData = new FormData();
@@ -28,6 +28,7 @@ const PostsState = ({ children }) => {
       });
 
       response = await response.json();
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -54,6 +55,7 @@ const PostsState = ({ children }) => {
   };
 
   const searchPosts = async (value) => {
+
     try {
       const apiUrl = "http://localhost:3001/api";
 
@@ -66,7 +68,7 @@ const PostsState = ({ children }) => {
       setSearch(response.articulo);
     } catch (error) {
       console.log(error);
-      setSearch(null);
+      setSearch([]);
     }
   };
 

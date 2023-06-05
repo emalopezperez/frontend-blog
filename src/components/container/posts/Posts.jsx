@@ -20,21 +20,29 @@ const Posts = () => {
     if (search) {
       setPosts(search);
     } else {
-      console.log("Post no encontrado");
+      setPosts([]);
     }
   }, [search]);
 
-  return (
-    <div className="posts">
-      {posts.map((post) => (
-        <Card
-          post={post}
-          key={post._id}
-          imageSrc={`http://localhost:3001/api/imagen/${post.imagen}`}
-        />
-      ))}
-    </div>
-  );
+  if (posts.length) {
+    return (
+      <div className="posts">
+        {posts.map((post) => (
+          <Card
+            post={post}
+            key={post._id}
+            imageSrc={`http://localhost:3001/api/imagen/${post.imagen}`}
+          />
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <div className="article-no-fount">
+        <h3>Articulo no encontrado...</h3>
+      </div>
+    );
+  }
 };
 
 export default Posts;

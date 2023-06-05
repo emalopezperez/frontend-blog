@@ -33,7 +33,6 @@ const Card = ({ post, imageSrc }) => {
   return (
     <section className="card-container">
       <Toaster position="top-right" reverseOrder={false} />
-
       <article>
         {admin && (
           <selection className="container-butons">
@@ -47,8 +46,13 @@ const Card = ({ post, imageSrc }) => {
         <h3>{titulo}</h3>
         <img src={imageSrc} alt="" />
         <p>{contenido}</p>
-        <p><span>Autor:</span> {autor}</p>
-        <p><span>Publicado: </span>{formattedDate}</p>
+        <p>
+          <span>Autor:</span> {autor}
+        </p>
+        <p>
+          <span>Publicado: </span>
+          {formattedDate}
+        </p>
         <button className="arrow-button">
           <span>Post</span>
           <svg
@@ -64,6 +68,7 @@ const Card = ({ post, imageSrc }) => {
           </svg>
         </button>
       </article>
+      )
     </section>
   );
 };
