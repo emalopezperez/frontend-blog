@@ -45,6 +45,16 @@
   outline: none;
 }
 
+.search-container button {
+  background-color: black;
+  width: 80px;
+  height: 100%;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 .search-container i {
   font-size: 14px;
 }

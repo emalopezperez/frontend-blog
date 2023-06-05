@@ -1,8 +1,20 @@
+import { useContext, useState } from "react";
+import postsContext from "../../../context/posts/postsContext";
 import "./filters.css";
 
 const Filters = () => {
+  const PostsContext = useContext(postsContext);
+  const { searchPosts } = PostsContext;
 
-  
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchInputChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
+  const handleSearchButtonClick = () => {
+    searchPosts(searchText);
+  };
 
   return (
     <nav className="container-filters">
@@ -27,7 +39,13 @@ const Filters = () => {
         </button>
       </section>
       <div className="search-container">
-        <input type="search" placeholder="Buscar post..." />
+        <input
+          type="search"
+          placeholder="Buscar post..."
+          value={searchText}
+          onChange={handleSearchInputChange}
+        />
+        <button onClick={handleSearchButtonClick}>Buscar</button>
       </div>
     </nav>
   );

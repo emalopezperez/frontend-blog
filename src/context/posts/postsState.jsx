@@ -8,6 +8,7 @@ const PostsState = ({ children }) => {
   const { token } = AuthContext;
 
   const [postDelete, setPostDelete] = useState(false);
+  const [search, setSearch] = useState(null);
 
   const crearPosts = async (file, data) => {
     const formData = new FormData();
@@ -27,8 +28,6 @@ const PostsState = ({ children }) => {
       });
 
       response = await response.json();
-
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -46,11 +45,28 @@ const PostsState = ({ children }) => {
       });
 
       response = await response.json();
-      console.log(response)
+      console.log(response);
 
       setPostDelete(true);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const searchPosts = async (value) => {
+    try {
+      const apiUrl = "http://localhost:3001/api";
+
+      let response = await fetch(`${apiUrl}/buscar/${value}`, {
+        method: "GET",
+      });
+
+      response = await response.json();
+
+      setSearch(response.articulo);
+    } catch (error) {
+      console.log(error);
+      setSearch(null);
     }
   };
 
@@ -60,6 +76,8 @@ const PostsState = ({ children }) => {
         crearPosts,
         deletePost,
         postDelete,
+        searchPosts,
+        search,
       }}>
       {children}
     </postsContext.Provider>
