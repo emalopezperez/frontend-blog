@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import "./card.css";
+import {formatDate} from "../../../helpers/formatDate"
 
 const Card = ({ post, imageSrc }) => {
-  const { contenido, titulo } = post;
+  const { contenido, titulo, autor, fecha } = post;
+  const formattedDate = formatDate(fecha); 
 
   return (
     <section className="card-container">
@@ -10,7 +12,9 @@ const Card = ({ post, imageSrc }) => {
         <h3>{titulo}</h3>
         <img src={imageSrc} alt="" />
         <p>{contenido}</p>
-        <button className="button2">Leer mas ...</button>
+        <p>{autor}</p>
+        <p>{formattedDate}</p> 
+        <button className="button2">Leer más...</button>
       </article>
     </section>
   );

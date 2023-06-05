@@ -8,14 +8,15 @@ import Escribir from "./pages/escribir";
 function App() {
   const AuthContext = useContext(authContext);
   const { autenticado } = AuthContext;
-
-  console.log(autenticado);
+  
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/escribir-blog" element={autenticado ? <Escribir /> : <Error />} />
-
+        <Route
+          path="/escribir-blog"
+          element={autenticado ? <Escribir /> : <Error />}
+        />
       </Routes>
     </Router>
   );

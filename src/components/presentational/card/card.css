@@ -2,17 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 330px;
-  height: 440px;
+  width: 350px;
+  height: 470px;
+  border: 1px solid #595a5a;
   border-radius: 5px;
-  border: solid 1px #444;
 }
 
 .card-container article {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 
 section article h3 {
@@ -49,7 +49,8 @@ section article p {
   padding: 10px;
   font-size: 18px;
   cursor: pointer;
-  border: 1px solid black;
+  border: 1px solid #595a5a;
+  border-radius: 5px;
   box-shadow: 6px 6px 12px #e0dede, -6px -6px 12px #ffffff;
   margin-bottom: 30px;
 }

@@ -7,14 +7,20 @@ const AuthState = ({ children }) => {
   const [token, setToken] = useState("");
   const [autenticado, setAutenticado] = useState(false);
   const [registrado, setRegistrado] = useState(false);
+  const [usuario, setUsuario] = useState(false);
 
   useEffect(() => {
     const storedToken = Cookies.get("token");
     const storedAutenticado = Cookies.get("autenticado");
+    const storedUsuario = Cookies.get("usuario");
 
     if (storedToken) {
       setToken(storedToken);
       setAutenticado(storedAutenticado === "true");
+      const usuarioJSON = decodeURIComponent(storedUsuario);
+      const usuario = JSON.parse(usuarioJSON);
+
+      setUsuario(usuario);
     }
   }, []);
 
@@ -31,15 +37,27 @@ const AuthState = ({ children }) => {
       });
       const responseData = await response.json();
 
+      const nombre = responseData.usuario.nombre;
+      const email = responseData.usuario.email;
+
+      const user = {
+        nombre: nombre,
+        email: email,
+      };
+
+      const usuario = JSON.stringify(user);
+
       if (responseData.token) {
         console.log("login exitoso");
         Cookies.set("token", responseData.token);
         Cookies.set("autenticado", true);
+        Cookies.set("usuario", usuario);
         setToken(responseData.token);
         setAutenticado(true);
       } else {
         Cookies.remove("token");
         Cookies.set("autenticado", false);
+        Cookies.remove("usuario");
         setToken("");
         setAutenticado(false);
       }
@@ -50,15 +68,15 @@ const AuthState = ({ children }) => {
 
   const logout = () => {
     Cookies.remove("token");
+    Cookies.remove("usuario");
     Cookies.remove("autenticado");
+    setUsuario(false);
     setToken("");
     setAutenticado(false);
   };
 
   const registrarse = async (data) => {
     const apiUrl = "http://localhost:3001/api/auth";
-
-    console.log(data);
 
     try {
       const response = await fetch(`${apiUrl}/signup`, {
@@ -86,7 +104,8 @@ const AuthState = ({ children }) => {
         login,
         logout,
         registrarse,
-        registrado
+        registrado,
+        usuario,
       }}>
       {children}
     </authContext.Provider>
