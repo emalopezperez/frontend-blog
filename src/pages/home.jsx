@@ -7,7 +7,7 @@ const Home = () => {
     <main>
       <TopBar />
       <Header />
-      <Main/>
+      <Main />
     </main>
   );
 };

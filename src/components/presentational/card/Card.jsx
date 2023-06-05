@@ -8,7 +8,7 @@ import postsContext from "../../../context/posts/postsContext";
 
 const Card = ({ post, imageSrc }) => {
   const AuthContext = useContext(authContext);
-  const { usuario } = AuthContext;
+  const { admin } = AuthContext;
 
   const PostsContext = useContext(postsContext);
   const { deletePost, postDelete } = PostsContext;
@@ -35,7 +35,7 @@ const Card = ({ post, imageSrc }) => {
       <Toaster position="top-right" reverseOrder={false} />
 
       <article>
-        {usuario && (
+        {admin && (
           <selection className="container-butons">
             <button className="button-editar">Editar</button>
             <button onClick={handleSubmit} className="button-delete">
@@ -47,8 +47,8 @@ const Card = ({ post, imageSrc }) => {
         <h3>{titulo}</h3>
         <img src={imageSrc} alt="" />
         <p>{contenido}</p>
-        <p>{autor}</p>
-        <p>{formattedDate}</p>
+        <p><span>Autor:</span> {autor}</p>
+        <p><span>Publicado: </span>{formattedDate}</p>
         <button className="arrow-button">
           <span>Post</span>
           <svg

@@ -1,8 +1,13 @@
+import TopBar from "../components/presentational/topBar/TopBar";
+import PaginaNoAcess from "../components/presentational/errors/PaginaNoAcess";
 
 const Error = () => {
   return (
-    <div>error ruta protegida</div>
-  )
-}
+    <>
+      <TopBar />
+      <PaginaNoAcess />
+    </>
+  );
+};
 
-export default Error
+export default Error;

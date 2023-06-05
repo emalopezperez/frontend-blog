@@ -1,9 +1,10 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import authContext from "../../../context/auth/authContext";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const AuthContext = useContext(authContext);
-  const { login } = AuthContext;
+  const { login, autenticado } = AuthContext;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,15 +12,18 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (email.length <= 3) {
-      console.log("nombre muy corto");
+    if (!email || !password) {
+      toast.error("Todos los campos son obligatorios");
+      return;
+    }
 
+    if (email.length <= 3) {
+      toast.error("nombre muy corto");
       return;
     }
 
     if (password.length <= 2) {
-      console.log("error contrasena muy corta");
-
+      toast.error("error contrasena muy corta");
       return;
     }
 
@@ -34,8 +38,19 @@ const Login = () => {
     setPassword("");
   };
 
+  useEffect(() => {
+    if (autenticado) {
+      toast.success("Bienvenid@");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1200);
+    }
+  }, [autenticado]);
+
   return (
     <div className="form-container">
+      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-right" reverseOrder={false} />
       <p className="title">Login</p>
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-group">

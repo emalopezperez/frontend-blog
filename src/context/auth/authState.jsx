@@ -8,19 +8,28 @@ const AuthState = ({ children }) => {
   const [autenticado, setAutenticado] = useState(false);
   const [registrado, setRegistrado] = useState(false);
   const [usuario, setUsuario] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
     const storedToken = Cookies.get("token");
     const storedAutenticado = Cookies.get("autenticado");
     const storedUsuario = Cookies.get("usuario");
+    const storedAdmin = Cookies.get("administrador");
 
     if (storedToken) {
       setToken(storedToken);
       setAutenticado(storedAutenticado === "true");
+      setAdmin(storedAdmin === "true");
       const usuarioJSON = decodeURIComponent(storedUsuario);
       const usuario = JSON.parse(usuarioJSON);
 
       setUsuario(usuario);
+
+      if (storedAdmin === "true") {
+        Cookies.set("administrador", true);
+      } else {
+        Cookies.remove("administrador");
+      }
     }
   }, []);
 
@@ -36,6 +45,11 @@ const AuthState = ({ children }) => {
         body: JSON.stringify(data),
       });
       const responseData = await response.json();
+
+      if (responseData.usuario.roles[0].name === "admin") {
+        setAdmin(true);
+        Cookies.set("administrador", true);
+      }
 
       const nombre = responseData.usuario.nombre;
       const email = responseData.usuario.email;
@@ -58,6 +72,7 @@ const AuthState = ({ children }) => {
         Cookies.remove("token");
         Cookies.set("autenticado", false);
         Cookies.remove("usuario");
+        Cookies.remove("administrador");
         setToken("");
         setAutenticado(false);
       }
@@ -69,6 +84,7 @@ const AuthState = ({ children }) => {
   const logout = () => {
     Cookies.remove("token");
     Cookies.remove("usuario");
+    Cookies.remove("administrador");
     Cookies.remove("autenticado");
     setUsuario(false);
     setToken("");
@@ -106,6 +122,7 @@ const AuthState = ({ children }) => {
         registrarse,
         registrado,
         usuario,
+        admin,
       }}>
       {children}
     </authContext.Provider>

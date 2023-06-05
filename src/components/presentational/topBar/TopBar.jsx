@@ -47,9 +47,9 @@ const TopBar = () => {
 
         <nav className="top-center-list">
           <li>
-            <Link to="/">Inicio</Link>
+            <Link to="/">Blog</Link>
           </li>
-          <li className="">Nosotros</li>
+          <li className="">Sobre mi</li>
           <li className="">Recursos</li>
           <li className="">Contacto</li>
           <li>

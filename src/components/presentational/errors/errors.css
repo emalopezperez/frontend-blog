@@ -1,0 +1,23 @@
+.container-errors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 200px auto 20px auto;
+  gap: 40px;
+}
+
+.container-errors h3 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.container-errors button {
+  padding: 8px;
+  cursor: pointer;
+  width: 120px;
+  background-color: black;
+  color: white;
+  border: none ;
+}
