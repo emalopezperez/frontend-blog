@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import postsContext from "./postsContext";
 import authContext from "../auth/authContext";
 
 const PostsState = ({ children }) => {
   const AuthContext = useContext(authContext);
   const { token } = AuthContext;
+
+  const [postDelete, setPostDelete] = useState(false);
 
   const crearPosts = async (file, data) => {
     const formData = new FormData();
@@ -31,10 +33,33 @@ const PostsState = ({ children }) => {
       console.log(error);
     }
   };
+
+  const deletePost = async (id) => {
+    try {
+      const apiUrl = "http://localhost:3001/api";
+
+      let response = await fetch(`${apiUrl}/article/${id}`, {
+        method: "DELETE",
+        headers: {
+          "x-access-token": token,
+        },
+      });
+
+      response = await response.json();
+      console.log(response)
+
+      setPostDelete(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <postsContext.Provider
       value={{
         crearPosts,
+        deletePost,
+        postDelete,
       }}>
       {children}
     </postsContext.Provider>

@@ -12,7 +12,7 @@ const Write = () => {
   const PostsContext = useContext(postsContext);
   const { crearPosts } = PostsContext;
 
-  const { email, nombre } = usuario;
+  const { nombre } = usuario;
 
   const [titulo, setTitulo] = useState("");
   const [contenido, setContenido] = useState("");

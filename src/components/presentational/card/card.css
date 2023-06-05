@@ -2,17 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 350px;
-  height: 470px;
-  border: 1px solid #595a5a;
+  width: 340px;
+  height: 520px;
   border-radius: 5px;
+  flex-wrap: wrap;
+  box-shadow: 0px 10px 25px #7e88b741;
+  border-radius: 10px;
+  opacity: 1;
+  background-color: #f8f9fd;
+  padding: 5px;
 }
 
 .card-container article {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 3px;
+  align-items: center;
+  gap: 6px;
 }
 
 section article h3 {
@@ -44,13 +50,67 @@ section article p {
   -webkit-box-orient: vertical;
 }
 
-.button2 {
-  color: #090909;
-  padding: 10px;
-  font-size: 18px;
+.arrow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #ff9963;
+  width: 157px;
+  height: 40px;
   cursor: pointer;
-  border: 1px solid #595a5a;
-  border-radius: 5px;
-  box-shadow: 6px 6px 12px #e0dede, -6px -6px 12px #ffffff;
-  margin-bottom: 30px;
+  border-radius: 0 0 10px 0;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  margin-top: 12px;
+}
+
+svg {
+  margin: 0 0 0 30px;
+}
+
+button:hover svg {
+  margin: 0 0 0 90px;
+  transition: 0.3s;
+}
+
+button:not(:hover) svg {
+  transition: 0.3s;
+}
+
+button:active {
+  transform: scale(0.9);
+  transition: transform 200ms;
+}
+
+.container-butons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.container-butons button {
+  display: flex;
+  justify-content: left;
+  cursor: pointer;
+  border-radius: 0 0 10px 0;
+  padding: 6px;
+  border: none;
+  color: white;
+  transition: transform 0.2s;
+  font-weight: bold;
+}
+
+.button-editar {
+  background-color: rgb(7, 113, 77);
+}
+
+.button-delete {
+  background-color: rgb(152, 15, 15);
+}
+
+.container-butons button:hover {
+  transform: scale(0.9);
 }
