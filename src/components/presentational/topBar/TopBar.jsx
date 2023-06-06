@@ -9,7 +9,7 @@ import Auth from "../auth/Auth";
 
 const TopBar = () => {
   const AuthContext = useContext(authContext);
-  const { autenticado, logout, usuario } = AuthContext;
+  const { autenticado, logout, usuario, admin } = AuthContext;
 
   const [sowModal, setSowModal] = useState(false);
   const [openlogin, setOpenLogin] = useState(false);
@@ -75,7 +75,16 @@ const TopBar = () => {
 
             {openModalUser && (
               <div className="modal-user">
-                <button onClick={logout} className="top-list-item">
+                <p>
+                  <span>Nombre: </span>
+                  {usuario.nombre}
+                </p>
+                <p>
+                  <span>Rol: </span>
+                  {admin ? " Admin " : "Usuario"}
+                </p>
+
+                <button onClick={logout} className="top-list-item cerrar-sesion">
                   <span>Cerrar</span>
                 </button>
               </div>

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import "./card.css";
@@ -81,19 +82,30 @@ const Card = ({ post, imageSrc }) => {
               justifyContent: "space-between",
               alignItems: "center",
             }}>
-            <h2>Configuración</h2>
+            {admin ? (
+              <>
+                <h2>Configuración</h2>
 
-            <span>
-              {" "}
-              <span>Articulo: </span>
-              {titulo}
-            </span>
-            {admin && (
-              <div className="containers-buttons-post">
-                <button className="button-editar">Editar</button>
-                <button onClick={handleSubmit} className="button-delete">
-                  Eliminar
-                </button>
+                <span>
+                  {" "}
+                  <span>Articulo: </span>
+                  {titulo}
+                </span>
+
+                <div className="containers-buttons-post">
+                  <button className="button-editar">Editar</button>
+                  <button onClick={handleSubmit} className="button-delete">
+                    Eliminar
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div>
+                <h3>No tienes acceso a la configuración!!!</h3>
+                <span>
+                  Para mas informacion comunicarse con el administrador del
+                  blog.
+                </span>
               </div>
             )}
           </div>
@@ -109,21 +121,22 @@ const Card = ({ post, imageSrc }) => {
           <span>Publicado: </span>
           {formattedDate}
         </p>
-
-        <button className="arrow-button">
-          <span>Post</span>
-          <svg
-            viewBox="0 0 16 16"
-            className="bi bi-arrow-right"
-            fill="currentColor"
-            height="20"
-            width="20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-              fillRule="evenodd"></path>
-          </svg>
-        </button>
+        <Link to={`/articles/${_id}`}>
+          <button className="arrow-button">
+            <span>Post</span>
+            <svg
+              viewBox="0 0 16 16"
+              className="bi bi-arrow-right"
+              fill="currentColor"
+              height="20"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                fillRule="evenodd"></path>
+            </svg>
+          </button>
+        </Link>
       </article>
       )
     </section>

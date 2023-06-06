@@ -1,0 +1,19 @@
+.container-article {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container-article article {
+  margin: 60px auto 10px auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.container-article .image-article {
+  width: 90%;
+  height: 40%;
+}

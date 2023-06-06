@@ -43,7 +43,6 @@ li {
 
 .top-right .top-list-item {
   display: flex;
-  text-align: center;
   align-items: center;
   justify-content: center;
   background-color: #171717;
@@ -55,6 +54,10 @@ li {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   font-size: 18px;
   color: white;
+}
+
+.cerrar-sesion{
+  margin-top: 50%;
 }
 
 .top-right .nav-open {
@@ -85,13 +88,12 @@ li {
   width: 210px;
   height: 254px;
   border-radius: 10px;
-  background: rgb(245, 243, 243);
+  background: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
   display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
+  flex-direction: column;
+  padding-left: 10px;
 }
 
 /* Dispositivos móviles */
