@@ -1,10 +1,36 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import Modal from "react-modal";
 import toast, { Toaster } from "react-hot-toast";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
 import "./card.css";
 import { formatDate } from "../../../helpers/formatDate";
 import authContext from "../../../context/auth/authContext";
 import postsContext from "../../../context/posts/postsContext";
+
+const customStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    zIndex: 9999,
+  },
+  content: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    maxWidth: "90%",
+    width: "200px",
+    maxHeight: "90%",
+    height: "200px",
+    borderRadius: "8px",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+    padding: "16px",
+    background: "#fff",
+    overflow: "auto",
+  },
+};
+
+Modal.setAppElement("#root");
 
 const Card = ({ post, imageSrc }) => {
   const AuthContext = useContext(authContext);
@@ -13,8 +39,10 @@ const Card = ({ post, imageSrc }) => {
   const PostsContext = useContext(postsContext);
   const { deletePost, postDelete } = PostsContext;
 
-  const { contenido, titulo, autor, fecha, _id } = post;
+  const { contenido, titulo, autor, fecha, _id, categoria } = post;
   const formattedDate = formatDate(fecha);
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = () => {
     deletePost(_id);
@@ -30,29 +58,58 @@ const Card = ({ post, imageSrc }) => {
     }
   }, [postDelete]);
 
+  const handleModalToggle = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
+
   return (
     <section className="card-container">
       <Toaster position="top-right" reverseOrder={false} />
       <article>
-        {admin && (
-          <selection className="container-butons">
-            <button className="button-editar">Editar</button>
-            <button onClick={handleSubmit} className="button-delete">
-              Eliminar
-            </button>
-          </selection>
-        )}
+        <h6 className="categoria">{categoria}</h6>
+        <BiDotsHorizontalRounded onClick={handleModalToggle} className="dots" />
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={handleModalToggle}
+          style={customStyles}
+          contentLabel="Modal">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}>
+            <h2>Configuración</h2>
+
+            <span>
+              {" "}
+              <span>Articulo: </span>
+              {titulo}
+            </span>
+            {admin && (
+              <div className="containers-buttons-post">
+                <button className="button-editar">Editar</button>
+                <button onClick={handleSubmit} className="button-delete">
+                  Eliminar
+                </button>
+              </div>
+            )}
+          </div>
+        </Modal>
 
         <h3>{titulo}</h3>
         <img src={imageSrc} alt="" />
-        <p>{contenido}</p>
-        <p>
-          <span>Autor:</span> {autor}
+        <p className="contenido-card">{contenido}</p>
+        <p className="contenido-card">
+          <span className="">Autor:</span> {autor}
         </p>
-        <p>
+        <p className="contenido-card">
           <span>Publicado: </span>
           {formattedDate}
         </p>
+
         <button className="arrow-button">
           <span>Post</span>
           <svg

@@ -9,11 +9,12 @@ import Auth from "../auth/Auth";
 
 const TopBar = () => {
   const AuthContext = useContext(authContext);
-  const { autenticado, logout } = AuthContext;
+  const { autenticado, logout, usuario } = AuthContext;
 
   const [sowModal, setSowModal] = useState(false);
   const [openlogin, setOpenLogin] = useState(false);
   const [navMobilOpen, setNavMobilOpen] = useState(false);
+  const [openModalUser, setOpenModalUser] = useState(false);
 
   const handleOnClick = () => {
     setNavMobilOpen(!navMobilOpen);
@@ -27,6 +28,10 @@ const TopBar = () => {
   const openModalRegistrarse = () => {
     setSowModal(true);
     setOpenLogin(false);
+  };
+
+  const handleOnClickModal = () => {
+    setOpenModalUser(!openModalUser);
   };
 
   return (
@@ -59,14 +64,22 @@ const TopBar = () => {
 
         {autenticado ? (
           <nav className="top-right">
-            <button onClick={logout} className="top-list-item ">
-              logout
+            <button onClick={handleOnClickModal} className=" button-user">
+              <img
+                src="/public/img/icons/user.jpg"
+                alt="user"
+                className="icon-user"
+              />
+              <span>{usuario.email}</span>
             </button>
-            <img
-              src="/public/img/icons/user.jpg"
-              alt="user"
-              className="icon-user"
-            />
+
+            {openModalUser && (
+              <div className="modal-user">
+                <button onClick={logout} className="top-list-item">
+                  <span>Cerrar</span>
+                </button>
+              </div>
+            )}
           </nav>
         ) : (
           <nav className="top-right">

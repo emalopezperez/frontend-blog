@@ -3,14 +3,15 @@
   justify-content: center;
   align-items: center;
   width: 335px;
-  height: 600px;
+  height: 545px;
   border-radius: 5px;
   flex-wrap: wrap;
-  box-shadow: 0px 10px 25px #7e88b741;
+  box-shadow: 0px 10px 25px #4e4e5141;
   border-radius: 10px;
   opacity: 1;
   background-color: #f8f9fd;
   padding: 5px;
+  position: relative;
 }
 
 .card-container article {
@@ -20,14 +21,31 @@
   align-items: center;
 }
 
+section article .categoria {
+  position: absolute;
+  top: -20px;
+  left: 15px;
+  font-size: 13px;
+  color: #b19b1f;
+}
+
+.dots {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  font-size: 30px;
+  color: #171717;
+  cursor: pointer;
+}
+
 section article h3 {
   display: flex;
   justify-content: center;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
   cursor: pointer;
   font-family: "Lora", serif;
-  color: #444;
+  color: #171717;
 }
 
 section article img {
@@ -37,7 +55,7 @@ section article img {
   object-fit: cover;
 }
 
-section article p {
+.contenido-card {
   width: 250px;
   font-family: "Varela Round", sans-serif;
   font-size: 14px;
@@ -49,13 +67,15 @@ section article p {
   -webkit-box-orient: vertical;
 }
 
+
+
 .arrow-button {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  background-color: #ff9963;
-  width: 157px;
+  background-color: #171717;
+  width: 255px;
   height: 40px;
   cursor: pointer;
   border-radius: 0 0 10px 0;
@@ -72,7 +92,7 @@ svg {
 }
 
 button:hover svg {
-  margin: 0 0 0 90px;
+  margin: 0 0 0 190px;
   transition: 0.3s;
 }
 
@@ -85,36 +105,42 @@ button:active {
   transition: transform 200ms;
 }
 
-.container-butons {
-  width: 100%;
+.containers-buttons-post {
+  margin-top: 28px;
   display: flex;
-  justify-content: space-between;
-}
-.container-butons button {
-  display: flex;
-  justify-content: left;
-  cursor: pointer;
-  border-radius: 0 0 10px 0;
-  padding: 6px;
-  border: none;
-  color: white;
-  transition: transform 0.2s;
-  font-weight: bold;
+  gap: 15px;
 }
 
 .button-editar {
   background-color: rgb(7, 113, 77);
+  width: 70px;
+  height: 40px;
+  border-radius: 0 0 10px 0;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  border: none;
 }
 
 .button-delete {
   background-color: rgb(152, 15, 15);
+  height: 40px;
+  width: 75px;
+  border-radius: 0 0 10px 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  border: none;
 }
 
 .container-butons button:hover {
   transform: scale(0.9);
 }
 
-.article-no-fount{
+.article-no-fount {
   display: flex;
   justify-content: center;
   height: 300px;

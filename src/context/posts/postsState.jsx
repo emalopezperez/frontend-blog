@@ -14,11 +14,13 @@ const PostsState = ({ children }) => {
     const formData = new FormData();
     formData.append("titulo", data.titulo);
     formData.append("contenido", data.contenido);
+    formData.append("markdown", data.markdown);
     formData.append("autor", data.nombre);
+    formData.append("categoria", data.categoria);
     formData.append("imagen", file);
+
     try {
       const apiUrl = "http://localhost:3001/api";
-
       let response = await fetch(`${apiUrl}/create`, {
         method: "POST",
         headers: {
@@ -55,7 +57,6 @@ const PostsState = ({ children }) => {
   };
 
   const searchPosts = async (value) => {
-
     try {
       const apiUrl = "http://localhost:3001/api";
 

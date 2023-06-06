@@ -42,25 +42,56 @@ li {
 }
 
 .top-right .top-list-item {
-  padding: 5px;
-  font-size: 20px;
-  border: solid 1px black;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #171717;
+  width: 120px;
+  height: 40px;
   cursor: pointer;
-  background-color: white;
-}
-
-.top-right .top-list-item:hover{
-  background-color: rgb(242, 236, 236);
+  border-radius: 0 0 10px 0;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+  color: white;
 }
 
 .top-right .nav-open {
   border: solid 1px white;
 }
 
-.icon-user{
-  width: 33px;
-  border-radius: 100%;
+.button-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 7px;
   cursor: pointer;
+  color: #171717;
+  cursor: pointer;
+}
+
+.icon-user {
+  width: 25px;
+  height: 30px;
+  border-radius: 100%;
+}
+
+.modal-user {
+  position: absolute;
+  top: 54px;
+  right: 40px;
+  width: 210px;
+  height: 254px;
+  border-radius: 10px;
+  background: rgb(245, 243, 243);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 /* Dispositivos móviles */
