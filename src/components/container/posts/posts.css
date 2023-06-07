@@ -1,14 +1,10 @@
-.posts{
+.posts {
+  height: 100%;
+  width: 90%;
   display: flex;
-  justify-content: center;
-  gap: 70px;
   flex-wrap: wrap;
-  margin: 30px;
+  justify-content: center;
+  justify-content: space-between;
+  gap: 60px;
   
-}
-
-@media (max-width: 767px) {
-  .posts{
-    gap: 40px;
-  }
 }

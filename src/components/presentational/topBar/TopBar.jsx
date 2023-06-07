@@ -70,7 +70,6 @@ const TopBar = () => {
                 alt="user"
                 className="icon-user"
               />
-              <span>{usuario.email}</span>
             </button>
 
             {openModalUser && (
@@ -80,11 +79,17 @@ const TopBar = () => {
                   {usuario.nombre}
                 </p>
                 <p>
+                  <span>Correo: {usuario.email}</span>
+                </p>
+
+                <p>
                   <span>Rol: </span>
                   {admin ? " Admin " : "Usuario"}
                 </p>
 
-                <button onClick={logout} className="top-list-item cerrar-sesion">
+                <button
+                  onClick={logout}
+                  className="top-list-item cerrar-sesion">
                   <span>Cerrar</span>
                 </button>
               </div>

@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
 import "./card.css";
 import { formatDate } from "../../../helpers/formatDate";
 import authContext from "../../../context/auth/authContext";
@@ -40,10 +39,10 @@ const Card = ({ post, imageSrc }) => {
   const PostsContext = useContext(postsContext);
   const { deletePost, postDelete } = PostsContext;
 
-  const { contenido, titulo, autor, fecha, _id, categoria } = post;
-  const formattedDate = formatDate(fecha);
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const { contenido, titulo, fecha, _id, categoria } = post;
+  const formattedDate = formatDate(fecha);
 
   const handleSubmit = () => {
     deletePost(_id);
@@ -65,80 +64,51 @@ const Card = ({ post, imageSrc }) => {
 
   return (
     <section className="card-container">
-      <Toaster position="top-right" reverseOrder={false} />
-      <article>
-        <h6 className="categoria">{categoria}</h6>
-        <BiDotsHorizontalRounded onClick={handleModalToggle} className="dots" />
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={handleModalToggle}
+        style={customStyles}
+        contentLabel="Modal">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}>
+          <>
+            <p>Esta seguro que desea elminar el articulo {titulo}?</p>
 
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={handleModalToggle}
-          style={customStyles}
-          contentLabel="Modal">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}>
-            {admin ? (
-              <>
-                <h2>Configuración</h2>
+            <div className="butons-modals-delete">
+              <button onClick={handleSubmit} className="button-delete">
+                Eliminar
+              </button>
+            </div>
+          </>
+        </div>
+      </Modal>
 
-                <span>
-                  {" "}
-                  <span>Articulo: </span>
-                  {titulo}
-                </span>
-
-                <div className="containers-buttons-post">
-                  <button className="button-editar">Editar</button>
-                  <button onClick={handleSubmit} className="button-delete">
-                    Eliminar
-                  </button>
-                </div>
-              </>
-            ) : (
-              <div>
-                <h3>No tienes acceso a la configuración!!!</h3>
-                <span>
-                  Para mas informacion comunicarse con el administrador del
-                  blog.
-                </span>
-              </div>
-            )}
-          </div>
-        </Modal>
-
-        <h3>{titulo}</h3>
-        <img src={imageSrc} alt="" />
-        <p className="contenido-card">{contenido}</p>
-        <p className="contenido-card">
-          <span className="">Autor:</span> {autor}
-        </p>
-        <p className="contenido-card">
-          <span>Publicado: </span>
-          {formattedDate}
-        </p>
-        <Link to={`/articles/${_id}`}>
-          <button className="arrow-button">
-            <span>Post</span>
-            <svg
-              viewBox="0 0 16 16"
-              className="bi bi-arrow-right"
-              fill="currentColor"
-              height="20"
-              width="20"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-                fillRule="evenodd"></path>
-            </svg>
+      {admin && (
+        <div className="containers-buttons-post">
+          <button className="button-editar">Editar</button>
+          <button onClick={handleModalToggle} className="button-delete">
+            Eliminar
           </button>
-        </Link>
-      </article>
-      )
+        </div>
+      )}
+
+      <Toaster position="top-right" reverseOrder={false} />
+      <Link to={`/articles/${_id}`}>
+        <article>
+          <h6 className="categoria">{categoria}</h6>
+          <img src={imageSrc} alt="blog" />
+          <h3>{titulo}</h3>
+          <p className="contenido-card">
+            <span className="article-date">Fecha: {formattedDate}</span>
+          </p>
+          <p className="contenido-card">{contenido}</p>
+        </article>
+      </Link>
     </section>
   );
 };

@@ -1,20 +1,12 @@
 import "./main.css";
-import Posts from "../../container/posts/Posts";
-import Aside from "../aside/Aside";
-import Filters from "../filters-blog/Filters";
 
-const Main = () => {
+// eslint-disable-next-line react/prop-types
+const Main = ({ headerComponent, contentComponent, asideComponent }) => {
   return (
     <main className="container">
-      <div className="navbar">
-        <Filters />
-      </div>
-      <section className="cards">
-        <Posts />
-      </section>
-      <aside className="aside">
-        <Aside />
-      </aside>
+      <div className="navbar">{headerComponent}</div>
+      <section className="cards">{contentComponent}</section>
+      <aside className="aside">{asideComponent}</aside>
     </main>
   );
 };

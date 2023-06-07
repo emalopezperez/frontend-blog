@@ -90,7 +90,7 @@ const Write = () => {
           <div className="writeFormFile">
             <h2>Seleccionar Imagen</h2>
             <label htmlFor="fileInput">
-              <i className="writeIcon fas fa-plus">+</i>
+              <i className="writeIcon fas fa-plus"></i>
             </label>
             <input
               name="file"

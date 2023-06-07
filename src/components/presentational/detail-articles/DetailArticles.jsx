@@ -8,17 +8,23 @@ const DetailArticles = ({ article, imageSrc }) => {
 
   const formattedDate = formatDate(fecha);
   return (
-    <main className="container-article">
+    <section className="container-article">
       <article>
         <img className="image-article" src={imageSrc} alt={titulo} />
-        <p>{categoria}</p>
-        <h2>{titulo}</h2>
-        <p>{contenido}</p>
-        <ReactMarkdown>{markdown}</ReactMarkdown>
-        <span>Fecha: {formattedDate}</span>
-        <p>{autor}</p>
+        <section className="container-article-span">
+          <h4>{categoria}</h4>
+          <h4 className="article-date">Fecha: {formattedDate}</h4>
+        </section>
+
+        <h2 className="article-title">{titulo}</h2>
+        <p className="">{contenido}</p>
+        <p>
+          <ReactMarkdown>{markdown}</ReactMarkdown>
+        </p>
+
+        <p className="article-date"><span>Autor: </span>{autor}</p>
       </article>
-    </main>
+    </section>
   );
 };
 
