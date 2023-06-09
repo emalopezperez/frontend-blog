@@ -4,6 +4,7 @@
   width: 60%;
   text-align: center;
   overflow: hidden;
+  position: relative;
 }
 
 section img {

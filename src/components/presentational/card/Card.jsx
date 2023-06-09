@@ -90,7 +90,9 @@ const Card = ({ post, imageSrc }) => {
 
       {admin && (
         <div className="containers-buttons-post">
-          <button className="button-editar">Editar</button>
+          <Link to={`/editar-blog/${_id}`}>
+            <button className="button-editar">Editar</button>
+          </Link>
           <button onClick={handleModalToggle} className="button-delete">
             Eliminar
           </button>

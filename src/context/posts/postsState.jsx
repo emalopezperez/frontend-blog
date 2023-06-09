@@ -73,6 +73,35 @@ const PostsState = ({ children }) => {
     }
   };
 
+  const updatePost = async (file, id, data) => {
+
+    const formData = new FormData();
+    formData.append("titulo", data.titulo);
+    formData.append("contenido", data.contenido);
+    formData.append("markdown", data.markdown);
+    formData.append("autor", data.nombre);
+    formData.append("categoria", data.categoria);
+    formData.append("imagen", file);
+
+    try {
+      const apiUrl = "http://localhost:3001/api";
+
+      let response = await fetch(`${apiUrl}/article/${id}`, {
+        method: "PUT",
+        headers: {
+          "x-access-token": token,
+        },
+        body: formData,
+      });
+
+      response = await response.json();
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <postsContext.Provider
       value={{
@@ -81,6 +110,7 @@ const PostsState = ({ children }) => {
         postDelete,
         searchPosts,
         search,
+        updatePost,
       }}>
       {children}
     </postsContext.Provider>

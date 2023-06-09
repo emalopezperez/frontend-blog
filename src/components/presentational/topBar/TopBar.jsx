@@ -64,13 +64,12 @@ const TopBar = () => {
 
         {autenticado ? (
           <nav className="top-right">
-            <button onClick={handleOnClickModal} className=" button-user">
-              <img
-                src="/public/img/icons/user.jpg"
-                alt="user"
-                className="icon-user"
-              />
-            </button>
+            <img
+              src="/public/img/icons/user.jpg"
+              alt="user"
+              className="icon-user"
+              onClick={handleOnClickModal}
+            />
 
             {openModalUser && (
               <div className="modal-user">

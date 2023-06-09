@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 
 const Articles = () => {
   const { id } = useParams();
-
   return (
     <div>
       <TopBar />
