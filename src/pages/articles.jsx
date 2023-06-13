@@ -1,4 +1,4 @@
-import Main from "../components/presentational/main/Main";
+import Container from "../components/presentational/containers/Container";
 import TopBar from "../components/presentational/topBar/TopBar";
 import ArticlesContainer from "../components/container/articles/ArticlesContainer";
 import Aside from "../components/presentational/aside/Aside";
@@ -9,8 +9,8 @@ const Articles = () => {
   return (
     <div>
       <TopBar />
-      <main className="main-container-detail-article">
-        <Main
+      <main className="">
+        <Container
           contentComponent={<ArticlesContainer id={id} />}
           asideComponent={<Aside />}
         />

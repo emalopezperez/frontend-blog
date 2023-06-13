@@ -1,0 +1,33 @@
+.container-about {
+  width: 100%;
+  display: flex;
+  justify-content: center;;
+}
+
+
+.container-about article{
+  width: 80%;
+  display: flex;
+
+}
+
+.container-about article p {
+  width: 100%;
+  text-align: justify;
+  font-size: 16px;
+  font-family: "Varela Round", sans-serif;
+  line-height: 28px;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+
+.container-img img {
+  margin-top: 5%;
+  width: 80%;
+  height: 90%;
+  object-fit: cover;
+}

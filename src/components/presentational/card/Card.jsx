@@ -62,6 +62,10 @@ const Card = ({ post, imageSrc }) => {
     setModalIsOpen(!modalIsOpen);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
+
   return (
     <section className="card-container">
       <Modal
@@ -74,13 +78,13 @@ const Card = ({ post, imageSrc }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            alignItems: "center",
+            alingItems:"center"
           }}>
           <>
             <p>Esta seguro que desea elminar el articulo {titulo}?</p>
 
             <div className="butons-modals-delete">
-              <button onClick={handleSubmit} className="button-delete">
+              <button onClick={handleSubmit} className="">
                 Eliminar
               </button>
             </div>

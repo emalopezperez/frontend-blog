@@ -3,6 +3,7 @@
   min-width: 300px;
   width: 100%;
   position: relative;
+  display: flex;
 }
 
 .card-container article {
@@ -92,3 +93,28 @@ section article img {
   transform: scale(0.9);
 }
 
+.butons-modals-delete {
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+}
+
+.butons-modals-delete button {
+  height: 35px;
+  width: 80px;
+  background-color: rgb(152, 15, 15);
+  cursor: pointer;
+  border-radius: 0 0 10px 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  padding: 2px;
+  font-size: 13px;
+  z-index: 10;
+}
+
+
+.butons-modals-delete button:hover{
+  background-color:black ;
+  color: white;
+}

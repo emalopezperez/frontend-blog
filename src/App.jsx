@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import Articles from "./pages/articles";
 import Escribir from "./pages/escribir";
 import Editar from "./pages/editar-post";
+import SobreMi from "./pages/sobre-mi";
 import Error from "./pages/error";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/sobre-mi" element={<SobreMi />} />
         <Route path="/articles/:id" element={<Articles />} />
         <Route
           path="/editar-blog/:id"

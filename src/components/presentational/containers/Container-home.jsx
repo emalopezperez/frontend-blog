@@ -1,7 +1,7 @@
-import "./main.css";
+import "./containers-home.css"
 
 // eslint-disable-next-line react/prop-types
-const Main = ({ headerComponent, contentComponent, asideComponent }) => {
+const ContainerHome = ({ headerComponent, contentComponent, asideComponent }) => {
   return (
     <main className="container">
       <div className="navbar">{headerComponent}</div>
@@ -11,4 +11,4 @@ const Main = ({ headerComponent, contentComponent, asideComponent }) => {
   );
 };
 
-export default Main;
+export default ContainerHome

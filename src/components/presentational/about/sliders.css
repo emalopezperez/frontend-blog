@@ -1,0 +1,7 @@
+.container-slider {
+ width: 80%;
+ height: 200px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}

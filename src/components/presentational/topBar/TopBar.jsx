@@ -54,7 +54,9 @@ const TopBar = () => {
           <li>
             <Link to="/">Blog</Link>
           </li>
-          <li className="">Sobre mi</li>
+          <li className="">
+            <Link to="/sobre-mi">Sobre mi</Link>
+          </li>
           <li className="">Recursos</li>
           <li className="">Contacto</li>
           <li>
@@ -65,7 +67,7 @@ const TopBar = () => {
         {autenticado ? (
           <nav className="top-right">
             <img
-              src="/public/img/icons/user.jpg"
+              src="/public/img/icons/ema_0.png"
               alt="user"
               className="icon-user"
               onClick={handleOnClickModal}
@@ -73,12 +75,9 @@ const TopBar = () => {
 
             {openModalUser && (
               <div className="modal-user">
+                <p>{usuario.nombre}</p>
                 <p>
-                  <span>Nombre: </span>
-                  {usuario.nombre}
-                </p>
-                <p>
-                  <span>Correo: {usuario.email}</span>
+                  <span>{usuario.email}</span>
                 </p>
 
                 <p>
@@ -96,7 +95,9 @@ const TopBar = () => {
           </nav>
         ) : (
           <nav className="top-right">
-            <button onClick={openModalLogin} className="top-list-item ">
+            <button
+              onClick={openModalLogin}
+              className="top-list-item button-login">
               Login
             </button>
             <button onClick={openModalRegistrarse} className="top-list-item">

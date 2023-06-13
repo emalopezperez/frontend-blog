@@ -30,15 +30,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #171717;
-  width: 120px;
-  height: 40px;
+  background-color: #dc2626;
+  width: 100px;
+  height: 35px;
   cursor: pointer;
   border-radius: 0 0 10px 0;
   border: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   font-size: 18px;
   color: white;
+}
+
+.top-right .button-login {
+  background-color: black;
+}
+
+.top-right .top-list-item:hover {
 }
 
 .cerrar-sesion {
@@ -50,8 +57,8 @@
 }
 
 .icon-user {
-  width: 25px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
   cursor: pointer;
 }
@@ -60,10 +67,11 @@
   position: absolute;
   top: 54px;
   right: 40px;
-  width: 210px;
+  width: 230px;
   height: 254px;
   border-radius: 10px;
-  background: white;
+  background: black;
+  color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
   display: flex;
@@ -71,11 +79,11 @@
   padding-left: 10px;
 }
 
-.top-right{
-  display: flex;
-  gap: 8px;
-}
 
+.top-right {
+  display: flex;
+  gap: 15px;
+}
 
 /* Dispositivos móviles */
 .top-movil {
