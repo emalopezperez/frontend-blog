@@ -1,8 +1,10 @@
 
 .container-article{
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 3%;
 }
 .container-article article {
   width: 80%;

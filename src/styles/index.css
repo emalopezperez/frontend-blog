@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   box-sizing: content-box;
@@ -32,3 +32,6 @@ li {
   list-style: none;
 }
 
+.container-home{
+  height: 100vh;
+}

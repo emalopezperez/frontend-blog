@@ -7,13 +7,13 @@ import Aside from "../components/presentational/aside/Aside";
 
 const Home = () => {
   return (
-    <main>
+    <main className="container-home">
       <TopBar />
       <Header />
       <ContainerHome
-        headerComponent={<Filters />}
-        contentComponent={<Posts />}
-        asideComponent={<Aside />}
+        headerComponent={<Filters/>}
+        contentComponent={<Posts/>}
+        asideComponent={<Aside/>}
       />
     </main>
   );

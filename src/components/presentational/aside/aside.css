@@ -1,5 +1,4 @@
 .sidebar {
-  
   background-color: #fdfbfb;
   border-radius: 10px;
   display: flex;
@@ -63,5 +62,5 @@
 
 .img-sidebar{
   width: 80%;
-  height: 300px;
+  height: auto;
 }

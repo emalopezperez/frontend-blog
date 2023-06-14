@@ -1,7 +1,28 @@
-.container-slider {
- width: 80%;
- height: 200px;
+.slider-container {
+  width: 80%;
   display: flex;
   justify-content: center;
-  background-color: black;
+}
+
+.slider {
+  
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 21%;
+  overflow: hidden;
+}
+
+.card-info {
+  width: 400px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-info:hover {
+  cursor: pointer;
+  transform: scale(1.04);
+}
+
+.card-info img {
+  width: 100%;
+  object-fit: cover;
 }

@@ -2,12 +2,11 @@
 
 import "./container.css";
 
-const Container = ({ contentComponent, asideComponent,footerComponent }) => {
+const Container = ({ contentComponent, asideComponent }) => {
   return (
     <main className="container">
       <section className="main">{contentComponent}</section>
       <aside className="aside">{asideComponent}</aside>
-      <footer className="footer">{footerComponent}</footer>
     </main>
   );
 };
