@@ -50,19 +50,18 @@ const TopBar = () => {
           </li>
         </section>
 
-        <nav className="top-center-list">
+        <ul className="top-center-list">
           <li>
             <Link to="/">Blog</Link>
           </li>
           <li className="">
             <Link to="/sobre-mi">Sobre mi</Link>
           </li>
-          <li className="">Recursos</li>
           <li className="">Contacto</li>
           <li>
             <Link to="/escribir-blog">Escribir</Link>
           </li>
-        </nav>
+        </ul>
 
         {autenticado ? (
           <nav className="top-right">

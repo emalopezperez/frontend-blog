@@ -1,7 +1,7 @@
 import "./about.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import"./about.css"
+import "./about.css";
 import SlidersProjects from "./SlidersProjects";
 
 const About = () => {
@@ -38,9 +38,13 @@ const About = () => {
           excepturi reiciendis, cumque aliquam. Iste obcaecati nemo nam quidem
           facilis ut quo perspiciatis?
         </p>
+      </article>
+
+      <article>
+        <h2 className="article-title">Sobre mi</h2>
 
         <Link to="/">
-          <button className="button-volver">
+          <button className="button-volver-home">
             <span>Volver</span>
             <svg
               viewBox="0 0 16 16"

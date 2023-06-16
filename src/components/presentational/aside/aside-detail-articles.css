@@ -1,6 +1,6 @@
-.sidebar {
-  background-color: #fdfbfb;
-  height: 100vh;
+.sidebar-detail-articles {
+  background-color: #ffffff;
+  height: 100%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -66,4 +66,17 @@
 .img-sidebar {
   width: 80%;
   height: auto;
+}
+
+.indice{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;;
+  width: 100%;
+
+}
+
+.indice li{
+  cursor: pointer;
 }

@@ -1,7 +1,6 @@
-import Container from "../components/presentational/containers/Container";
 import TopBar from "../components/presentational/topBar/TopBar";
 import ArticlesContainer from "../components/container/articles/ArticlesContainer";
-import Aside from "../components/presentational/aside/Aside";
+
 import { useParams } from "react-router-dom";
 
 const Articles = () => {
@@ -10,10 +9,7 @@ const Articles = () => {
     <div>
       <TopBar />
       <main className="">
-        <Container
-          contentComponent={<ArticlesContainer id={id} />}
-          asideComponent={<Aside />}
-        />
+        <ArticlesContainer id={id} />
       </main>
     </div>
   );
