@@ -11,6 +11,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-color: white;
+
 }
 
 section article .categoria {
@@ -36,6 +38,7 @@ section article img {
   height: 200px;
   border-radius: 5px;
   object-fit: cover;
+  margin: 0;
 }
 
 .contenido-card {
@@ -49,7 +52,7 @@ section article img {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-align: justify;
-  padding: 0 15px;
+  
 }
 
 .containers-buttons-post {
@@ -114,8 +117,7 @@ section article img {
   z-index: 10;
 }
 
-
-.butons-modals-delete button:hover{
-  background-color:black ;
+.butons-modals-delete button:hover {
+  background-color: black;
   color: white;
 }

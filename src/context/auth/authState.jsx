@@ -35,9 +35,9 @@ const AuthState = ({ children }) => {
 
   const login = async (data) => {
     try {
-      const apiUrl = "http://localhost:3001/api/auth";
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
 
-      const response = await fetch(`${apiUrl}/login`, {
+      const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,13 +89,17 @@ const AuthState = ({ children }) => {
     setUsuario(false);
     setToken("");
     setAutenticado(false);
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
   };
 
   const registrarse = async (data) => {
-    const apiUrl = "http://localhost:3001/api/auth";
+    const apiUrl = import.meta.env.VITE_DEPLOY_URL;
 
     try {
-      const response = await fetch(`${apiUrl}/signup`, {
+      const response = await fetch(`${apiUrl}/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

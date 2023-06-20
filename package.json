@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "js-cookie": "^3.0.5",
     "moment": "^2.29.4",
     "react": "^18.2.0",
@@ -21,6 +22,7 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.11.2",
     "react-scroll": "^1.8.9",
+    "react-simple-typewriter": "^5.0.1",
     "remark-slug": "^7.0.1"
   },
   "devDependencies": {

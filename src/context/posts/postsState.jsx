@@ -20,8 +20,8 @@ const PostsState = ({ children }) => {
     formData.append("imagen", file);
 
     try {
-      const apiUrl = "http://localhost:3001/api";
-      let response = await fetch(`${apiUrl}/create`, {
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
+      let response = await fetch(`${apiUrl}/api/create`, {
         method: "POST",
         headers: {
           "x-access-token": token,
@@ -38,9 +38,9 @@ const PostsState = ({ children }) => {
 
   const deletePost = async (id) => {
     try {
-      const apiUrl = "http://localhost:3001/api";
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
 
-      let response = await fetch(`${apiUrl}/article/${id}`, {
+      let response = await fetch(`${apiUrl}/api/article/${id}`, {
         method: "DELETE",
         headers: {
           "x-access-token": token,
@@ -58,9 +58,9 @@ const PostsState = ({ children }) => {
 
   const searchPosts = async (value) => {
     try {
-      const apiUrl = "http://localhost:3001/api";
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
 
-      let response = await fetch(`${apiUrl}/buscar/${value}`, {
+      let response = await fetch(`${apiUrl}/api/buscar/${value}`, {
         method: "GET",
       });
 
@@ -84,9 +84,9 @@ const PostsState = ({ children }) => {
     formData.append("imagen", file);
 
     try {
-      const apiUrl = "http://localhost:3001/api";
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
 
-      let response = await fetch(`${apiUrl}/article/${id}`, {
+      let response = await fetch(`${apiUrl}/api/article/${id}`, {
         method: "PUT",
         headers: {
           "x-access-token": token,

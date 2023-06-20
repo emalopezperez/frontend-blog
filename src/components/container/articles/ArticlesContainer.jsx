@@ -7,15 +7,18 @@ const ArticlesContainer = ({ id }) => {
 
   const getArticle = async () => {
     try {
-      const apiUrl = "http://localhost:3001/api";
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
 
-      let response = await fetch(`${apiUrl}/article/${id}`, {
+      let response = await fetch(`${apiUrl}/api/article/${id}`, {
         method: "GET",
       });
 
       response = await response.json();
 
+      console.log(response)
+
       setArticle(response.item);
+
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +34,7 @@ const ArticlesContainer = ({ id }) => {
   return (
     <main>
       <DetailArticles article={article}
-      imageSrc={`http://localhost:3001/api/imagen/${article.imagen}`}
+      imageSrc={`${import.meta.env.VITE_DEPLOY_URL}/api/imagen/${article.imagen}`}
       />
     </main>
   );

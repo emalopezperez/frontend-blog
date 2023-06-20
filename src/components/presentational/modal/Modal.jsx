@@ -25,7 +25,9 @@ const Modal = ({ sowModal, setSowModal, children }) => {
       {sowModal ? (
         <section className="modal">
           <button onClick={click} className="modal-close">
-            <RiCloseLine size={20} />
+            <span>
+              X
+            </span>
           </button>
           <div className="modal-form">{children}</div>
         </section>

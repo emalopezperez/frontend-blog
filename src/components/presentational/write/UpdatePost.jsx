@@ -26,9 +26,9 @@ const UpdatePost = ({ id }) => {
 
   const getArticle = async (id) => {
     try {
-      const apiUrl = "http://localhost:3001/api";
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
 
-      let response = await fetch(`${apiUrl}/article/${id}`, {
+      let response = await fetch(`${apiUrl}/api/article/${id}`, {
         method: "GET",
       });
 
@@ -116,7 +116,7 @@ const UpdatePost = ({ id }) => {
           <div className="writeFormFile">
             <img
               className="writeImg"
-              src={`http://localhost:3001/api/imagen/${post.imagen}`}
+              src={`${import.meta.env.VITE_DEPLOY_URL}/api/imagen/${post.imagen}`}
               alt="Vista previa de la imagen"
             />
             <h2>Seleccionar Imagen</h2>

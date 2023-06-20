@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1%;
 }
 
 .container-about article {
@@ -45,7 +46,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  background-color: rgb(7, 83, 48);
+  background-color: #ff8906;
   width: 125px;
   height: 40px;
   cursor: pointer;
@@ -61,16 +62,16 @@ svg {
   margin: 0 0 0 25px;
 }
 
-button:hover svg {
+.button-volver-home:hover svg {
   margin: 0 0 0 60px;
   transition: 0.5s;
 }
 
-button:not(:hover) svg {
+.button-volver-home:not(:hover) svg {
   transition: 0.5s;
 }
 
-button:active {
+.button-volver-home:active {
   transform: scale(0.9);
   transition: transform 200ms;
 }

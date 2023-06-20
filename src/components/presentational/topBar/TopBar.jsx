@@ -35,7 +35,7 @@ const TopBar = () => {
   };
 
   return (
-    <>
+    <header className="header-top-nav">
       {/* desktop */}
       <nav className="top-container">
         <section className="networks-containers">
@@ -54,10 +54,11 @@ const TopBar = () => {
           <li>
             <Link to="/">Blog</Link>
           </li>
+          <li className="">Recursos</li>
           <li className="">
             <Link to="/sobre-mi">Sobre mi</Link>
           </li>
-          <li className="">Contacto</li>
+
           <li>
             <Link to="/escribir-blog">Escribir</Link>
           </li>
@@ -165,7 +166,7 @@ const TopBar = () => {
       <Modal sowModal={sowModal} setSowModal={setSowModal} className="modal">
         <Auth setSowModal={setSowModal} openModalLogin={openlogin} />
       </Modal>
-    </>
+    </header>
   );
 };
 

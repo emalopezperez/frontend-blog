@@ -24,6 +24,10 @@ const DetailArticles = ({ article, imageSrc }) => {
     setIndice(ids);
   }, [markdown]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="container">
       <section className="main">
@@ -35,11 +39,11 @@ const DetailArticles = ({ article, imageSrc }) => {
               <h4 className="article-date">Fecha: {formattedDate}</h4>
             </section>
 
-            <h2 className="article-title">{titulo}</h2>
+            <h3 className="article-title">{titulo}</h3>
             <p className="">{contenido}</p>
-            <p id="mi-contenedor">
+            <div id="mi-contenedor">
               <ReactMarkdown>{markdown}</ReactMarkdown>
-            </p>
+            </div>
 
             <p className="article-date">
               <span>Autor: </span>
