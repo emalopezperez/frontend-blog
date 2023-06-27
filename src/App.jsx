@@ -6,7 +6,7 @@ import Articles from "./pages/articles";
 import Write from "./pages/write";
 import Editar from "./pages/edit-post";
 import AboutMe from "./pages/about-me";
-import Resources from "./pages/resources/resources";
+import Resources from "./pages/resources/Resources";
 import Error from "./pages/error";
 
 
