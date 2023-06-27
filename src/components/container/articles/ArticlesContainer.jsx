@@ -14,9 +14,6 @@ const ArticlesContainer = ({ id }) => {
       });
 
       response = await response.json();
-
-      console.log(response)
-
       setArticle(response.item);
 
     } catch (error) {

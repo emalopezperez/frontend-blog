@@ -2,9 +2,9 @@ import { useState, useContext } from "react";
 import authContext from "../../../context/auth/authContext";
 import "./form.css";
 
-const Registrarse = () => {
+const SingUp = () => {
   const AuthContext = useContext(authContext);
-  const { registrarse } = AuthContext;
+  const { singUp  } = AuthContext;
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -34,7 +34,7 @@ const Registrarse = () => {
       nombre: name,
     };
 
-    registrarse(data);
+    singUp (data);
 
     setName("");
     setEmail("");
@@ -96,4 +96,4 @@ const Registrarse = () => {
   );
 };
 
-export default Registrarse;
+export default SingUp;

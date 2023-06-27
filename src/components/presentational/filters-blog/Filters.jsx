@@ -7,7 +7,6 @@ const Filters = () => {
   const { searchPosts } = PostsContext;
 
   const [searchText, setSearchText] = useState("");
-  const [filter, setFilter] = useState("");
 
   const handleSearchInputChange = (event) => {
     setSearchText(event.target.value);
@@ -20,30 +19,20 @@ const Filters = () => {
   };
 
   useEffect(() => {
-    if (filter) {
-      searchPosts(filter);
+    if (searchText) {
+      searchPosts(searchText);
     }
-  }, [filter]);
+  }, [searchText]);
 
   return (
     <nav className="container-filters">
-      <section className="container-category">
-        <button onClick={() => setFilter("Javascript")} className="filter-all">
-          <span>All</span>
-        </button>
-        <button onClick={() => setFilter("Javascript")}>
-          <span>Javascript</span>
-        </button>
-        <button onClick={() => setFilter("css")}>
-          <span>CSS</span>
-        </button>
-        <button onClick={() => setFilter("react")}>
-          <span>React</span>
-        </button>
-        <button onClick={() => setFilter("next")}>
-          <span>Next</span>
-        </button>
-      </section>
+      <selection className="category">
+        <button>All</button>
+        <button>JavaScript</button>
+        <button>CSS</button>
+        <button>React</button>
+      </selection>
+
       <div className="search-container">
         <input
           type="search"
@@ -53,6 +42,8 @@ const Filters = () => {
         />
         <button onClick={handleSearchButtonClick}>Buscar</button>
       </div>
+
+      <div className="nada"></div>
     </nav>
   );
 };

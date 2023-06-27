@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import authContext from "./context/auth/authContext";
-import Home from "./pages/home";
+import Home from "./pages/home/home";
 import Articles from "./pages/articles";
-import Escribir from "./pages/escribir";
-import Editar from "./pages/editar-post";
-import SobreMi from "./pages/sobre-mi";
+import Write from "./pages/write";
+import Editar from "./pages/edit-post";
+import AboutMe from "./pages/about-me";
+import Resources from "./pages/resources/resources";
 import Error from "./pages/error";
+
 
 function App() {
   const AuthContext = useContext(authContext);
@@ -16,7 +18,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sobre-mi" element={<SobreMi />} />
+        <Route path="/recursos" element={<Resources />} />
+        <Route path="/sobre-mi" element={<AboutMe />} />
+        
         <Route path="/articles/:id" element={<Articles />} />
         <Route
           path="/editar-blog/:id"
@@ -24,7 +28,7 @@ function App() {
         />
         <Route
           path="/escribir-blog"
-          element={admin ? <Escribir /> : <Error />}
+          element={admin ? <Write /> : <Error />}
         />
       </Routes>
     </Router>

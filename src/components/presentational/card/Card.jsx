@@ -26,7 +26,7 @@ const customStyles = {
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
     padding: "16px",
     background: "#fff",
-    overflow: "auto",
+    
   },
 };
 
@@ -63,7 +63,7 @@ const Card = ({ post, imageSrc }) => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -78,7 +78,7 @@ const Card = ({ post, imageSrc }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            alingItems:"center"
+            alingItems: "center",
           }}>
           <>
             <p>Esta seguro que desea elminar el articulo {titulo}?</p>
@@ -108,10 +108,10 @@ const Card = ({ post, imageSrc }) => {
         <article>
           <h6 className="categoria">{categoria}</h6>
           <img src={imageSrc} alt="blog" />
-          <h3>{titulo}</h3>
           <p className="contenido-card">
-            <span className="article-date">Fecha: {formattedDate}</span>
+            <span className="date">Emanuel Lopez. {formattedDate}</span>
           </p>
+          <h3>{titulo}</h3>
           <p className="contenido-card">{contenido}</p>
         </article>
       </Link>

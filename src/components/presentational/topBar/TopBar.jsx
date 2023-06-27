@@ -6,6 +6,7 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Modal from "../modal/Modal";
 import Auth from "../auth/Auth";
+import Filters from "../filters-blog/Filters";
 
 const TopBar = () => {
   const AuthContext = useContext(authContext);
@@ -35,137 +36,59 @@ const TopBar = () => {
   };
 
   return (
-    <header className="header-top-nav">
-      {/* desktop */}
-      <nav className="top-container">
-        <section className="networks-containers">
-          <li className="topIcon ">
-            <BsFillPersonLinesFill />
-          </li>
-          <li className="topIcon">
-            <FaGithub />
-          </li>
-          <li className="topIcon ">
-            <FaLinkedinIn />
-          </li>
-        </section>
+    <header className="nav-container">
+      <nav className="">
+        <h1>Blog</h1>
 
-        <ul className="top-center-list">
+        <ul>
           <li>
             <Link to="/">Blog</Link>
           </li>
-          <li className="">Recursos</li>
-          <li className="">
+          <li>
+            <Link to="/recursos">Recursos</Link>
+          </li>
+          <li>
             <Link to="/sobre-mi">Sobre mi</Link>
           </li>
-
           <li>
             <Link to="/escribir-blog">Escribir</Link>
           </li>
+
+          {openModalUser ? (
+            <div className="modal-user">
+              <p>{usuario.nombre}</p>
+              <p>
+                <span>{usuario.email}</span>
+              </p>
+
+              <p>
+                <span>Rol: </span>
+                {admin ? " Admin " : "Usuario"}
+              </p>
+
+              <button onClick={logout} className="top-list-item cerrar-sesion">
+                <span>Cerrar</span>
+              </button>
+            </div>
+          ) : (
+            <div className="buttons-containers-user">
+              <button onClick={openModalLogin} className="button-login">
+                <span>Login</span>
+              </button>
+
+              <button onClick={openModalRegistrarse}>
+                <span>Registrarse</span>
+              </button>
+            </div>
+          )}
+          
         </ul>
-
-        {autenticado ? (
-          <nav className="top-right">
-            <img
-              src="/public/img/icons/ema_0.png"
-              alt="user"
-              className="icon-user"
-              onClick={handleOnClickModal}
-            />
-
-            {openModalUser && (
-              <div className="modal-user">
-                <p>{usuario.nombre}</p>
-                <p>
-                  <span>{usuario.email}</span>
-                </p>
-
-                <p>
-                  <span>Rol: </span>
-                  {admin ? " Admin " : "Usuario"}
-                </p>
-
-                <button
-                  onClick={logout}
-                  className="top-list-item cerrar-sesion">
-                  <span>Cerrar</span>
-                </button>
-              </div>
-            )}
-          </nav>
-        ) : (
-          <nav className="top-right">
-            <button
-              onClick={openModalLogin}
-              className="top-list-item button-login">
-              Login
-            </button>
-            <button onClick={openModalRegistrarse} className="top-list-item">
-              Registrarse
-            </button>
-          </nav>
-        )}
+          
       </nav>
 
-      {/* Mobil */}
-
-      <section className="top-movil">
-        <h2 className="h2">blog</h2>
-        <button
-          className={`hamburger ${navMobilOpen ? "open" : ""}`}
-          onClick={handleOnClick}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </section>
-
-      {navMobilOpen && (
-        <nav className={`top-container-mobil ${navMobilOpen ? "open" : ""}`}>
-          <section className="info">
-            <h2 className="h2">blog</h2>
-            <button
-              className={`hamburger-cruz ${navMobilOpen ? "open" : ""}`}
-              onClick={() => setNavMobilOpen(!navMobilOpen)}>
-              <span></span>
-              <span></span>
-            </button>
-          </section>
-
-          <nav className="top-center-list">
-            <li className="top-list-item">Home</li>
-            <li className="top-list-item">About</li>
-            <li className="top-list-item">Recursos</li>
-            <li className="top-list-item">Contact</li>
-            <li className="top-list-item">Write</li>
-          </nav>
-
-          <nav className="top-right">
-            <button onClick={openModalLogin} className="top-list-item ">
-              Login
-            </button>
-            <button onClick={openModalRegistrarse} className="top-list-item">
-              Registrarse
-            </button>
-          </nav>
-
-          <section className="networks-containers">
-            <li className="topIcon ">
-              <BsFillPersonLinesFill />
-            </li>
-            <li className="topIcon">
-              <FaGithub />
-            </li>
-            <li className="topIcon ">
-              <FaLinkedinIn />
-            </li>
-          </section>
-        </nav>
-      )}
-
       <Modal sowModal={sowModal} setSowModal={setSowModal} className="modal">
-        <Auth setSowModal={setSowModal} openModalLogin={openlogin} />
-      </Modal>
+          <Auth setSowModal={setSowModal} openModalLogin={openlogin} />
+        </Modal>
     </header>
   );
 };

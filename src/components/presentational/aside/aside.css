@@ -1,10 +1,12 @@
 .sidebar {
   background-color: #fdfbfb;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .sidebarItem {
@@ -43,7 +45,7 @@
 }
 
 .sidebarListItem {
-  display: inline-block;
+  
   width: 50%;
   margin-top: 15px;
   cursor: pointer;
@@ -66,4 +68,20 @@
 .img-sidebar {
   width: 80%;
   height: auto;
+}
+
+.container-category{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.container-category button{
+  width: 100%;
+  cursor: pointer;
 }

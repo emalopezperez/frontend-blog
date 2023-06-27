@@ -30,7 +30,7 @@ const PostsState = ({ children }) => {
       });
 
       response = await response.json();
-      console.log(response);
+      
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +85,6 @@ const PostsState = ({ children }) => {
 
     try {
       const apiUrl = import.meta.env.VITE_DEPLOY_URL;
-
       let response = await fetch(`${apiUrl}/api/article/${id}`, {
         method: "PUT",
         headers: {

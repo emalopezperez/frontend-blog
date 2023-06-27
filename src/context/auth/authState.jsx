@@ -95,9 +95,8 @@ const AuthState = ({ children }) => {
     }, 300);
   };
 
-  const registrarse = async (data) => {
+  const singUp  = async (data) => {
     const apiUrl = import.meta.env.VITE_DEPLOY_URL;
-
     try {
       const response = await fetch(`${apiUrl}/api/auth/signup`, {
         method: "POST",
@@ -123,7 +122,7 @@ const AuthState = ({ children }) => {
         autenticado,
         login,
         logout,
-        registrarse,
+        singUp ,
         registrado,
         usuario,
         admin,
