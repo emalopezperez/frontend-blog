@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import authContext from "./context/auth/authContext";
-import Home from "./pages/home/home";
+import Home from "./pages/home/Home";
 import Articles from "./pages/articles";
 import Write from "./pages/write";
 import Editar from "./pages/edit-post";
