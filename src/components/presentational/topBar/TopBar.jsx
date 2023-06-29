@@ -6,7 +6,7 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Modal from "../modal/Modal";
 import Auth from "../auth/Auth";
-import Filters from "../filters-blog/Filters";
+
 
 const TopBar = () => {
   const AuthContext = useContext(authContext);
@@ -38,7 +38,7 @@ const TopBar = () => {
   return (
     <header className="nav-container">
       <nav className="">
-        <h1>Blog</h1>
+        <h1 className="titulo">Blog</h1>
 
         <ul>
           <li>

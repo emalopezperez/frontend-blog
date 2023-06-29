@@ -1,4 +1,4 @@
-import "./containers-home.css"
+import "./containers-home.css";
 import Header from "../../components/presentational/header/Header";
 import TopBar from "../../components/presentational/topBar/TopBar";
 import RecentPosts from "../../components/presentational/recent-posts-home/RecentPosts";
@@ -9,16 +9,16 @@ const Home = () => {
   return (
     <main className="container-home">
       <TopBar />
-      <Header/>
-      <RecentPosts/>
-      <main className="container-home-grid">
-      <nav className="navbar-home">
-        <Filters/>
-      </nav>
-      <section className="cards-home">
-        <Posts/>
+      <Header />
+      <RecentPosts />
+      <selection className="container-home-grid">
+        <nav className="navbar-home">
+          <Filters />
+        </nav>
+        <section className="cards-home">
+          <Posts />
         </section>
-    </main>
+      </selection>
     </main>
   );
 };

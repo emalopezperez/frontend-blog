@@ -4,6 +4,7 @@
   min-width: 100px;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .card-container article {
@@ -64,8 +65,9 @@ section article img {
   display: flex;
   gap: 10px;
   position: absolute;
-  top: 0;
+  top: 0%;
   right: 0;
+  z-index: 990;
 }
 
 .button-editar {
@@ -73,7 +75,6 @@ section article img {
   width: 53px;
   background-color: rgb(7, 113, 77);
   cursor: pointer;
-  border-radius: 0 0 10px 0;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   border: none;
   color: white;
@@ -88,7 +89,6 @@ section article img {
   width: 53px;
   background-color: rgb(152, 15, 15);
   cursor: pointer;
-  border-radius: 0 0 10px 0;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   border: none;
   color: white;

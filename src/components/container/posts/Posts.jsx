@@ -1,13 +1,16 @@
+import "./posts.css";
 import Card from "../../presentational/card/Card";
 import { useEffect, useState, useContext } from "react";
 import postsContext from "../../../context/posts/postsContext";
-import "./posts.css";
+import Pagination from "../../presentational/Pagination/Pagination";
 
 const Posts = () => {
   const PostsContext = useContext(postsContext);
   const { search } = PostsContext;
 
   const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(6);
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_DEPLOY_URL;
@@ -26,18 +29,36 @@ const Posts = () => {
     }
   }, [search]);
 
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = posts.slice(firstPostIndex, lastPostIndex);
+
   if (posts.length) {
     return (
-      <div className="posts">
-        {posts.map((post) => (
-          <Card
-            post={post}
-            key={post._id}
-            imageSrc={`${import.meta.env.VITE_DEPLOY_URL}/api/imagen/${post.imagen}`}
+      <div className="container-posts">
+        <div className="posts">
+          {currentPosts.map((post) => (
+            <Card
+              post={post}
+              key={post._id}
+              imageSrc={`${import.meta.env.VITE_DEPLOY_URL}/api/imagen/${
+                post.imagen
+              }`}
+            />
+          ))}
+        </div>
+
+        <div className="pagination">
+          <Pagination
+            totalPosts={posts.length}
+            postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
           />
-        ))}
+        </div>
       </div>
     );
+    
   } else {
     return (
       <div className="article-no-fount">
