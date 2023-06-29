@@ -2,7 +2,7 @@ import "./posts.css";
 import Card from "../../presentational/card/Card";
 import { useEffect, useState, useContext } from "react";
 import postsContext from "../../../context/posts/postsContext";
-import Pagination from "../../presentational/Pagination/Pagination";
+import Pagination from "../../presentational/pagination/Pagination";
 
 const Posts = () => {
   const PostsContext = useContext(postsContext);

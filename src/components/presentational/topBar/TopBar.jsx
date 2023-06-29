@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./topBar.css";
 import authContext from "../../../context/auth/authContext";
@@ -7,11 +7,11 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Modal from "../modal/Modal";
 import Auth from "../auth/Auth";
 
-
 const TopBar = () => {
   const AuthContext = useContext(authContext);
   const { autenticado, logout, usuario, admin } = AuthContext;
 
+  const [scrollActive, setScrollActive] = useState(false);
   const [sowModal, setSowModal] = useState(false);
   const [openlogin, setOpenLogin] = useState(false);
   const [navMobilOpen, setNavMobilOpen] = useState(false);
@@ -35,8 +35,28 @@ const TopBar = () => {
     setOpenModalUser(!openModalUser);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 0) {
+        setScrollActive(true);
+      } else {
+        setScrollActive(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const containerStyle = {
+    backgroundColor: scrollActive ? 'rgba(0, 0, 0, 0.7)' : 'transparent',
+    color: scrollActive ? '#ffffff' : '#000000',
+    transition: 'background-color 0.5s ease, color 0.5s ease',
+  };
+
   return (
-    <header className="nav-container">
+    <header className="nav-container" style={containerStyle}>
       <nav className="">
         <h1 className="titulo">Blog</h1>
 
