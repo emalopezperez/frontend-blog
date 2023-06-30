@@ -30,7 +30,6 @@ const PostsState = ({ children }) => {
       });
 
       response = await response.json();
-      
     } catch (error) {
       console.log(error);
     }
@@ -74,7 +73,6 @@ const PostsState = ({ children }) => {
   };
 
   const updatePost = async (file, id, data) => {
-
     const formData = new FormData();
     formData.append("titulo", data.titulo);
     formData.append("contenido", data.contenido);

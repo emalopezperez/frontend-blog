@@ -10,14 +10,16 @@ const Posts = () => {
 
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(6);
+  const [postsPerPage, setPostsPerPage] = useState(7);
 
   useEffect(() => {
     const apiUrl = import.meta.env.VITE_DEPLOY_URL;
     const endpoint = `${apiUrl}/api/articles`;
     fetch(endpoint)
       .then((response) => response.json())
-      .then((data) => setPosts(data.items))
+      .then((data) => {
+        setPosts(data.items);
+      })
       .catch((error) => console.log(error));
   }, []);
 
@@ -58,7 +60,6 @@ const Posts = () => {
         </div>
       </div>
     );
-    
   } else {
     return (
       <div className="article-no-fount">

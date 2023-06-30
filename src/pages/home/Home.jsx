@@ -11,14 +11,14 @@ const Home = () => {
       <TopBar />
       <Header />
       <RecentPosts />
-      <selection className="container-home-grid">
+      <section className="container-home-grid">
         <nav className="navbar-home">
           <Filters />
         </nav>
         <section className="cards-home">
           <Posts />
         </section>
-      </selection>
+      </section>
     </main>
   );
 };

@@ -3,7 +3,7 @@ import "./recent-posts-home.css";
 const RecentPosts = () => {
   return (
     <main className="recent-posts-container">
-      <selection className="grid-container">
+      <section className="grid-container">
         <article className="cuadrado-izquierdo">
           <img
             className="recent-post-img"
@@ -39,7 +39,7 @@ const RecentPosts = () => {
             </button>
           </article>
         </section>
-      </selection>
+      </section>
     </main>
   );
 };

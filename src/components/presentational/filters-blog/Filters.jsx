@@ -26,12 +26,12 @@ const Filters = () => {
 
   return (
     <nav className="container-filters">
-      <selection className="category">
+      <section className="category">
         <button>All</button>
         <button>JavaScript</button>
         <button>CSS</button>
         <button>React</button>
-      </selection>
+      </section>
 
       <div className="search-container">
         <input
