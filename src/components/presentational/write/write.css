@@ -7,7 +7,7 @@
   position: relative;
 }
 
-section img {
+.write section img {
   width: 100%;
   height: 400px;
   margin: 6px auto;

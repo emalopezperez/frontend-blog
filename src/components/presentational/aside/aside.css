@@ -1,87 +1,51 @@
-.sidebar {
-  background-color: #fdfbfb;
+.container-sidebar {
+  height: 100vh;
   width: 100%;
-  height: 100%;
-  border-radius: 10px;
+}
+
+.container-sidebar .sidebar-item {
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 15px;
 }
 
-.sidebarItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 5px;
-}
-
-.sidebarTitle {
-  margin: 10px;
-  padding: 5px;
-  width: 80%;
-  border-top: 1px solid #a7a4a4;
-  border-bottom: 1px solid #a7a4a4;
-  font-family: "Varela Round", sans-serif;
-  font-size: 12px;
-  color: #222;
-  font-weight: 600;
-  line-height: 20px;
-  text-align: center;
-}
-
-.sidebarItem > img {
-  margin-top: 15px;
-}
-
-.sidebarItem > p {
-  padding: 30px;
-}
-
-.sidebarList {
-  list-style: none;
-  margin-bottom: 30px;
-}
-
-.sidebarListItem {
+.container-sidebar span{
   
-  width: 50%;
-  margin-top: 15px;
-  cursor: pointer;
 }
 
-.sidebarSocial {
-  margin-top: 15px;
-  width: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.container-sidebar .img-sidebar {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.sidebarIcon {
-  font-size: 16px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.img-sidebar {
-  width: 80%;
-  height: auto;
-}
-
-.container-category{
-  width: 80%;
+.email-input-sidebar {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin: 10px;
-  padding: 5px;
+  gap: 10px;
 }
 
-.container-category button{
-  width: 100%;
+.email-input-sidebar input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.email-input-sidebar button {
+  padding: 10px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.email-input-sidebar button:hover {
+  background-color: #333;
 }

@@ -3,7 +3,8 @@ import "./resources.css";
 const FiltersResources = () => {
   return (
     <nav className="container-filter-resources">
-      <button>Frontend</button>
+      <button>All</button>
+      <button>Frontendd</button>
       <button>Backend</button>
       <button>Libros</button>
     </nav>

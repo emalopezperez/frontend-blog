@@ -1,5 +1,6 @@
 import "./resources.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import TopBar from "../../components/presentational/topBar/TopBar";
 import ResourcesContainer from "../../components/container/resources/ResourcesContainer";
 import FiltersResources from "../../components/presentational/resources/FiltersResources";
@@ -15,6 +16,8 @@ const Resources = () => {
       <TopBar />
       <main className="container-resources">
         <section className="grid-resources">
+          <h2 className="title-resources">Recursos y Herramientas</h2>
+
           <div className="categories">
             <FiltersResources />
           </div>
@@ -22,10 +25,10 @@ const Resources = () => {
             <ResourcesContainer />
           </div>
           <aside className="sidebar-resources">
-            <Aside/>
+            <Aside />
           </aside>
-          <div className="pagination-resources">Paginación</div>
-          <div className="button-resources">home</div>
+
+          <div className="container-button-resources"></div>
         </section>
       </main>
     </>

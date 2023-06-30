@@ -20,14 +20,14 @@
 }
 
 .container-filters .category button{
+  background-color: black;
   cursor: pointer;
   border: none;
   font-size: 14px;
-  padding: 6px 12px;;
-  border: 1px solid white;
-  background-color: black;
-  color:white;
+  padding: 4px 14px;
+  color: white;
   transition: background-color 0.5s, color 0.5s;
+  border-radius: 10px;
 }
 
 .container-filters .category button:hover{
