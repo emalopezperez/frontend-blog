@@ -1,38 +1,41 @@
 import "./resources-container.css";
+import { useEffect, useState, useContext } from "react";
+import postsContext from "../../../context/posts/postsContext";
 import CardsResources from "../../presentational/resources/CardsResources";
 
 const ResourcesContainer = () => {
-  const resources = [
-    {
-      img: "https://images.unsplash.com/photo-1555530001-acee1750bdcc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
-      titulo: "Unsplash",
-      categoria: "frontend",
-      link: "https://unsplash.com/",
-    },
-    {
-      img: "/public/img/recursos/undraw.png",
-      titulo: "undraw",
-      categoria: "frontend",
-      link: "https://undraw.co/illustrations",
-    },
-    {
-      img: "/public/img/recursos/happyhues.png",
-      titulo: "happyhue",
-      categoria: "frontend",
-      link: "https://unsplash.com/",
-    },
-    {
-      img: "/public/img/recursos/hype4.png",
-      titulo: "hype4",
-      categoria: "frontend",
-      link: "https://hype4.academy/tools/glassmorphism-generator",
-    },
-  ];
+  const PostsContext = useContext(postsContext);
+  const { categoryResources } = PostsContext;
+
+  const [resources, setResources] = useState([]);
+  const [filteredResources, setFilteredResources] = useState([]);
+
+  useEffect(() => {
+    const apiUrl = import.meta.env.VITE_DEPLOY_URL;
+    const endpoint = `${apiUrl}/api/resource/get-resource`;
+    fetch(endpoint)
+      .then((response) => response.json())
+      .then((data) => {
+        setResources(data.resource);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    if (categoryResources) {
+      const filteredResources = resources.filter(
+        (resource) => resource.categoria === categoryResources
+      );
+      setFilteredResources(filteredResources);
+    } else {
+      setFilteredResources(resources);
+    }
+  }, [categoryResources, resources]);
 
   return (
     <main className="container-resources">
       <section className="resources-grid">
-        {resources.map((element, index) => (
+        {filteredResources.map((element, index) => (
           <CardsResources element={element} key={index} />
         ))}
       </section>
@@ -41,3 +44,4 @@ const ResourcesContainer = () => {
 };
 
 export default ResourcesContainer;
+

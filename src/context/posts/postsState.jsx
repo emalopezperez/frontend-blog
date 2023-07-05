@@ -9,6 +9,7 @@ const PostsState = ({ children }) => {
 
   const [postDelete, setPostDelete] = useState(false);
   const [search, setSearch] = useState([]);
+  const [categoryResources, setCategoryResources]= useState(null)
 
   const crearPosts = async (file, data) => {
     const formData = new FormData();
@@ -93,7 +94,6 @@ const PostsState = ({ children }) => {
 
       response = await response.json();
 
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -108,6 +108,8 @@ const PostsState = ({ children }) => {
         searchPosts,
         search,
         updatePost,
+        setCategoryResources,
+        categoryResources
       }}>
       {children}
     </postsContext.Provider>

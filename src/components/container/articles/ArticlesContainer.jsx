@@ -31,7 +31,7 @@ const ArticlesContainer = ({ id }) => {
   return (
     <main>
       <DetailArticles article={article}
-      imageSrc={`${import.meta.env.VITE_DEPLOY_URL}/api/imagen/${article.imagen}`}
+      imageSrc={article.imagen}
       />
     </main>
   );

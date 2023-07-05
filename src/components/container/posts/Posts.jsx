@@ -9,6 +9,7 @@ const Posts = () => {
   const { search } = PostsContext;
 
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(7);
 
@@ -43,9 +44,7 @@ const Posts = () => {
             <Card
               post={post}
               key={post._id}
-              imageSrc={`${import.meta.env.VITE_DEPLOY_URL}/api/imagen/${
-                post.imagen
-              }`}
+              imageSrc={post.imagen}
             />
           ))}
         </div>

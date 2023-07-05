@@ -13,7 +13,7 @@ const Resources = () => {
 
   return (
     <>
-      <TopBar />
+    <TopBar/>
       <main className="container-resources">
         <section className="grid-resources">
           <h2 className="title-resources">Recursos y Herramientas</h2>

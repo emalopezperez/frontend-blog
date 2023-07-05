@@ -26,7 +26,6 @@ const customStyles = {
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
     padding: "16px",
     background: "#fff",
-    
   },
 };
 
@@ -37,7 +36,7 @@ const Card = ({ post, imageSrc }) => {
   const { admin } = AuthContext;
 
   const PostsContext = useContext(postsContext);
-  const { deletePost, postDelete } = PostsContext;
+  const { deletePost, postDelete, search } = PostsContext;
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -63,8 +62,10 @@ const Card = ({ post, imageSrc }) => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (!search.length) {
+      window.scrollTo(0, 0);
+    }
+  }, [search]);
 
   return (
     <section className="card-container">
