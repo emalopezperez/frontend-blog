@@ -1,7 +1,7 @@
-.container-filters {
+.container-filters{
   width: 90%;
   display: flex;
-  align-items: center;
+  justify-content: center;
   justify-content: space-between;
 }
 
@@ -13,13 +13,13 @@
 }
 
 .category {
+  width: 25%;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.container-filters .category button{
+.container-filters .category button {
   background-color: black;
   cursor: pointer;
   border: none;
@@ -30,13 +30,13 @@
   border-radius: 10px;
 }
 
-.container-filters .category button:hover{
+.container-filters .category button:hover {
   background-color: transparent;
   color: black;
 }
 
-.nada{
-  width: 19%;
+.nada {
+  width: 25%;
 }
 
 .search-container input {
@@ -62,4 +62,33 @@
 
 .search-container button:hover {
   background-color: #333;
+}
+
+@media (max-width: 767px) {
+  .container-filters {
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  .search-container {
+    width: 90%;
+  }
+  .nada {
+    display: none;
+  }
+
+  .category {
+    width: 90%;
+    justify-content: space-between
+    
+  }
+
+  .container-filters .category button {
+    padding: 4px 10px;
+    font-size: 13px;
+  }
 }

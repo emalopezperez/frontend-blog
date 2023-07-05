@@ -9,7 +9,10 @@ const Home = () => {
   return (
     <main className="container-home">
       <TopBar />
-      <Header />
+      <section className="container-header">
+        <Header />
+      </section>
+
       <RecentPosts />
       <section className="container-home-grid">
         <nav className="navbar-home">

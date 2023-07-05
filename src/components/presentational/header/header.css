@@ -1,5 +1,5 @@
 .header {
-  width: 100%;
+  width: 90%;
   height: 300px;
   display: flex;
   justify-content: center;
@@ -9,6 +9,9 @@
   margin-top: 3%;
 }
 
+.header h1 {
+  font-size: 36px;
+}
 .email-input {
   display: flex;
   align-items: center;
@@ -38,4 +41,20 @@
 
 .email-input button:hover {
   background-color: #333;
+}
+
+@media (max-width: 767px) {
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .header span {
+    font-size: 15px;
+  }
+  .email-input {
+    width: 100%;
+  }
+  .email-input button {
+    padding: 9px 18px;
+  }
 }

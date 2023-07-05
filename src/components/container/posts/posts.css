@@ -1,21 +1,28 @@
 
 .container-posts {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: grid;
   grid-template-rows: 1fr 10%;
   align-items: center;
   justify-items: center;
-  gap: 12px;
+  gap: 22px;
 }
 
 .posts {
   width: 90%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
-  gap: 40px;
+  gap: 20px;
 }
 
 .pagination {
   width: 90%;
+}
+
+@media (max-width: 767px){
+  
+  .posts{
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  }
 }

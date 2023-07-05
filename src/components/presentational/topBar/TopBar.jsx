@@ -2,10 +2,11 @@ import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./topBar.css";
 import authContext from "../../../context/auth/authContext";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Modal from "../modal/Modal";
 import Auth from "../auth/Auth";
+import { FaUserAstronaut } from "react-icons/fa";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const TopBar = () => {
   const AuthContext = useContext(authContext);
@@ -45,18 +46,19 @@ const TopBar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const containerStyle = {
-    backgroundColor: scrollActive ? 'rgba(0, 0, 0, 0.7)' : 'transparent',
-    color: scrollActive ? '#ffffff' : '#000000',
-    transition: 'background-color 0.5s ease, color 0.5s ease',
+    backgroundColor: scrollActive ? "rgba(0, 0, 0, 0.7)" : "transparent",
+    color: scrollActive ? "#ffffff" : "#000000",
+    transition: "background-color 0.5s ease, color 0.5s ease",
   };
 
   return (
     <header className="nav-container" style={containerStyle}>
+      {/* Desktop*/}
       <nav className="">
         <h1 className="titulo">Blog</h1>
 
@@ -74,7 +76,7 @@ const TopBar = () => {
             <Link to="/escribir-blog">Escribir</Link>
           </li>
 
-          {openModalUser ? (
+          {openModalUser && (
             <div className="modal-user">
               <p>{usuario.nombre}</p>
               <p>
@@ -83,12 +85,20 @@ const TopBar = () => {
 
               <p>
                 <span>Rol: </span>
-                {admin ? " Admin " : "Usuario"}
+                {admin ? "Admin" : "Usuario"}
               </p>
 
               <button onClick={logout} className="top-list-item cerrar-sesion">
                 <span>Cerrar</span>
               </button>
+            </div>
+          )}
+          {autenticado ? (
+            <div className=" " onClick={handleOnClickModal}>
+              <FaUserAstronaut
+                onClick={handleOnClickModal}
+                className="icons-user"
+              />
             </div>
           ) : (
             <div className="buttons-containers-user">
@@ -101,14 +111,44 @@ const TopBar = () => {
               </button>
             </div>
           )}
-          
         </ul>
-          
       </nav>
 
+      {/* Mobil */}
+      <section className="container-movil">
+        <h2 className="h2">blog</h2>
+        <button
+          className={`hamburger ${navMobilOpen ? "open" : ""}`}
+          onClick={handleOnClick}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </section>
+
+      {navMobilOpen && (
+        <nav className={` ${navMobilOpen ? "open" : ""}`}>
+          <section className="info">
+            <h2 className="h2">blog</h2>
+            <button
+              className={`hamburger-cruz ${navMobilOpen ? "open" : ""}`}
+              onClick={() => setNavMobilOpen(true)}>
+              <span></span>
+              <span></span>
+            </button>
+          </section>
+
+          {navMobilOpen && (
+            <div className="modal-nav-mobil">
+              {/* Contenido del modal */} hola
+            </div>
+          )}
+        </nav>
+      )}
+
       <Modal sowModal={sowModal} setSowModal={setSowModal} className="modal">
-          <Auth setSowModal={setSowModal} openModalLogin={openlogin} />
-        </Modal>
+        <Auth setSowModal={setSowModal} openModalLogin={openlogin} />
+      </Modal>
     </header>
   );
 };
