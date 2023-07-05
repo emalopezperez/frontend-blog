@@ -9,7 +9,6 @@ const Posts = () => {
   const { search } = PostsContext;
 
   const [posts, setPosts] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(7);
 
@@ -41,11 +40,7 @@ const Posts = () => {
       <div className="container-posts">
         <div className="posts">
           {currentPosts.map((post) => (
-            <Card
-              post={post}
-              key={post._id}
-              imageSrc={post.imagen}
-            />
+            <Card post={post} key={post._id} imageSrc={post.imagen} />
           ))}
         </div>
 

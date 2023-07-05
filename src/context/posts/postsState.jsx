@@ -9,7 +9,8 @@ const PostsState = ({ children }) => {
 
   const [postDelete, setPostDelete] = useState(false);
   const [search, setSearch] = useState([]);
-  const [categoryResources, setCategoryResources]= useState(null)
+  const [categoryResources, setCategoryResources] = useState(null);
+  const [lastPosts, setLastPosts] = useState({});
 
   const crearPosts = async (file, data) => {
     const formData = new FormData();
@@ -93,10 +94,25 @@ const PostsState = ({ children }) => {
       });
 
       response = await response.json();
-
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const getLastPost = () => {
+    const apiUrl = import.meta.env.VITE_DEPLOY_URL;
+    const endpoint = `${apiUrl}/api/articles`;
+    fetch(endpoint)
+      .then((response) => response.json())
+      .then((data) => {
+        const sortedPosts = data.items.sort(
+          (a, b) => new Date(b.fecha) - new Date(a.fecha)
+        );
+        const lastPost = sortedPosts[0];
+
+        setLastPosts(lastPost);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -109,7 +125,9 @@ const PostsState = ({ children }) => {
         search,
         updatePost,
         setCategoryResources,
-        categoryResources
+        categoryResources,
+        getLastPost,
+        lastPosts
       }}>
       {children}
     </postsContext.Provider>

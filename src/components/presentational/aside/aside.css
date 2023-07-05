@@ -11,8 +11,17 @@
   gap: 15px;
 }
 
-.container-sidebar span{
-  
+.container-sidebar .sidebar-item p{
+  font-family: "Varela Round", sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-align: justify;
 }
 
 .container-sidebar .img-sidebar {
