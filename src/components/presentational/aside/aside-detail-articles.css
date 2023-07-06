@@ -21,12 +21,12 @@
 .sidebar-title {
   margin: 10px;
   padding: 5px;
-  border-top: 1px solid #a7a4a4;
-  border-bottom: 1px solid #a7a4a4;
+  border-top: 1px solid #848181;
+  border-bottom: 1px solid #848181;
   font-family: "Varela Round", sans-serif;
   font-size: 14px;
   color: #222;
-  font-weight: 600;
+  font-weight: bold;
   line-height: 20px;
   text-align: center;
 }
@@ -52,5 +52,6 @@
 }
 
 .index-item:hover {
-  background-color: #d5d5d5;
+  background-color: black;
+  color: white;
 }

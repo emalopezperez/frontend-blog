@@ -39,22 +39,36 @@
 
 /* Filter */
 .container-filter-resources {
+  width: 40%;
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
 }
 
 .container-filter-resources button {
+  height: 30px;
+  align-items: center;
   background-color: black;
   cursor: pointer;
   border: none;
-  font-size: 14px;
-  padding: 4px 14px;
+  font-size: 16px;
+  padding: 6px 16px;
   color: white;
-  transition: background-color 0.5s, color 0.5s;
-  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 20px;
 }
 
 .container-filter-resources button:hover {
   background-color: transparent;
   color: black;
+}
+
+
+@media (max-width: 767px) {
+  .container-filter-resources {
+    width: 80%;
+  }
+  .container-filter-resources button {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
 }

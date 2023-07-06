@@ -12,7 +12,6 @@
   height: 100%;
   grid-column: 2 / 3;
   grid-row: 1 / 3;
-  
   position: fixed;
   top: 19%;
   left: 80%;
@@ -26,4 +25,40 @@
   grid-column: 1 / 2;
   display: flex;
   justify-content: center;
+}
+
+/* Media queries para ajustar el diseño en diferentes tamaños de pantalla */
+
+@media screen and (max-width: 767px) {
+  /* Reglas CSS para dispositivos móviles */
+  .container {
+    grid-template-rows: auto 1fr; /* Cambiar el orden de las filas */
+    grid-template-columns: 1fr; /* Cambiar a una sola columna */
+    margin-top: 0; /* Eliminar el margen superior */
+    gap: 50px;
+  }
+  
+  .aside {
+    position: static; /* Cambiar a posición estática */
+    width: 100%; /* Ancho automático */
+    grid-column: auto; /* Restablecer el valor de la columna */
+    grid-row: auto; /* Restablecer el valor de la fila */
+    top: auto; /* Restablecer el valor superior */
+    left: auto; /* Restablecer el valor izquierdo */
+    margin: 0 auto; /* Centrar horizontalmente */
+  }
+  .main {
+    justify-content:center; 
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Reglas CSS para tablets */
+  .container {
+    margin-top: 10%; /* Ajustar el margen superior */
+  }
+  
+  .aside {
+    width: 30%; /* Ajustar el ancho */
+  }
 }

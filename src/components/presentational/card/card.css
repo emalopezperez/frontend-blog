@@ -61,6 +61,11 @@ section article img {
   text-align: justify;
 }
 
+.first:first-letter {
+  font-size: 19px;
+  font-weight: bold;
+}
+
 .containers-buttons-post {
   display: flex;
   gap: 10px;

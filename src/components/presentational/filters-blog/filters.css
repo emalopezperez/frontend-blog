@@ -1,4 +1,4 @@
-.container-filters{
+.container-filters {
   width: 90%;
   display: flex;
   justify-content: center;
@@ -19,15 +19,17 @@
   gap: 10px;
 }
 
-.container-filters .category button {
+.category button {
+  height: 30px;
+  align-items: center;
   background-color: black;
   cursor: pointer;
   border: none;
-  font-size: 14px;
-  padding: 4px 14px;
+  font-size: 16px;
+  padding: 6px 16px;
   color: white;
-  transition: background-color 0.5s, color 0.5s;
-  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 20px;
 }
 
 .container-filters .category button:hover {
@@ -83,10 +85,8 @@
 
   .category {
     width: 90%;
-    justify-content: space-between
-    
+    justify-content: space-between;
   }
-
   .container-filters .category button {
     padding: 4px 10px;
     font-size: 13px;

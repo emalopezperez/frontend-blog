@@ -112,3 +112,8 @@ textarea {
 .writeForm input[type="submit"]:hover {
   background-color: rgb(49, 48, 48);
 }
+
+
+@media (max-width: 768px){
+  
+}

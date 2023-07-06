@@ -39,11 +39,11 @@
   margin-bottom: 10%;
 }
 .container-article article {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .container-article-span {
   width: 100%;
@@ -54,12 +54,12 @@
   padding-left: 30px;
   padding-right: 30px;
 }
-.container-article article-title {
+
+.container-article .article-title,h3 {
   font-family: "Josefin Sans", sans-serif;
-  font-size: 26px;
-  font-weight: bold;
+  font-size: 32px;
   margin-top: 20px;
-  cursor: pointer;
+  font-weight: bold;
 }
 
 .container-article .image-article {
@@ -69,12 +69,13 @@
   border-radius: 7px;
   margin-top: 0;
 }
+
 .article-date {
   font-family: "Lora", serif;
   font-style: italic;
-  font-size: 14px;
-  color: #999;
+  font-size: 12px;
   margin-top: 5px;
+  color: black;
 }
 
 #mi-contenedor h3 {
@@ -83,49 +84,29 @@
 
 .container-article p {
   text-align: justify;
-  font-size: 16px;
-  width: 100%;
-  font-family: "Varela Round", sans-serif;
-  line-height: 28px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+  font-size: 18px;
+  font-family: "Arial", sans-serif;
+  line-height: 32px;
 }
 
-.button-volver {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  background-color: #ff8906;
-  width: 125px;
-  height: 40px;
-  cursor: pointer;
-  border-radius: 0 0 10px 0;
-  border: none;
-  box-shadow: 0 6px 12px var(--button-box-shadow-color);
-  font-family: var(--font-type);
-  font-size: 16px;
-  color: white;
+.container-article .contenido:first-letter {
+  font-size: 40px;
+  font-weight: bold;
+  float: left;
+  margin-right: 2px;
+  line-height: 0.8;
 }
 
-svg {
-  margin: 0 0 0 25px;
-}
+@media (max-width: 768px) {
+  .aside-article-detail {
+    display: none;
+  }
 
-.button-volver:hover svg {
-  margin: 0 0 0 60px;
-  transition: 0.5s;
-}
+  .container-article .image-article {
+    height: auto;
+  }
 
-.button-volver:not(:hover) svg {
-  transition: 0.5s;
-}
-
-.button-volver:active {
-  transform: scale(0.9);
-  transition: transform 200ms;
-}
-
-.footer {
-  height: 40px;
+  .article-date {
+    font-size: 10px;
+  }
 }

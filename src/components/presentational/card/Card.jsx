@@ -113,7 +113,7 @@ const Card = ({ post, imageSrc }) => {
             <span className="date">Emanuel Lopez. {formattedDate}</span>
           </p>
           <h3>{titulo}</h3>
-          <p className="contenido-card">{contenido}</p>
+          <p className="contenido-card first">{contenido}</p>
         </article>
       </Link>
     </section>

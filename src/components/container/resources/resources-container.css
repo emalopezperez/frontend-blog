@@ -11,3 +11,11 @@
   grid-template-columns: repeat(auto-fit, minMax(295px, 1fr));
   gap: 35px;
 }
+
+
+@media (max-width: 767px){
+  
+  .resources-grid{
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}

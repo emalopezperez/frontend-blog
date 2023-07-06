@@ -24,6 +24,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 8px;
+  font-size: 12px;
 }
 
 .email-input button {
@@ -53,8 +54,10 @@
   }
   .email-input {
     width: 100%;
+    font-size: 12px;
   }
   .email-input button {
     padding: 9px 18px;
+    font-size: 12px;
   }
 }
