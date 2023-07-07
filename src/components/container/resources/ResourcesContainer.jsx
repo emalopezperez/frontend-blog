@@ -2,6 +2,7 @@ import "./resources-container.css";
 import { useEffect, useState, useContext } from "react";
 import postsContext from "../../../context/posts/postsContext";
 import CardsResources from "../../presentational/resources/CardsResources";
+import Loader from "../../presentational/loader/Loader";
 
 const ResourcesContainer = () => {
   const PostsContext = useContext(postsContext);
@@ -16,7 +17,9 @@ const ResourcesContainer = () => {
     fetch(endpoint)
       .then((response) => response.json())
       .then((data) => {
-        setResources(data.resource);
+        setTimeout(() => {
+          setResources(data.resource);
+        }, 1300);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -32,16 +35,23 @@ const ResourcesContainer = () => {
     }
   }, [categoryResources, resources]);
 
+  if (resources.length) {
+    return (
+      <main className="container-resources">
+        <section className="resources-grid">
+          {filteredResources.map((element, index) => (
+            <CardsResources element={element} key={index} />
+          ))}
+        </section>
+      </main>
+    );
+  }
+
   return (
-    <main className="container-resources">
-      <section className="resources-grid">
-        {filteredResources.map((element, index) => (
-          <CardsResources element={element} key={index} />
-        ))}
-      </section>
-    </main>
+    <div className="container-loader-resources">
+      <Loader />
+    </div>
   );
 };
 
 export default ResourcesContainer;
-

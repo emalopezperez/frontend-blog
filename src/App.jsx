@@ -9,7 +9,6 @@ import AboutMe from "./pages/about-me";
 import Resources from "./pages/resources/Resources";
 import Error from "./pages/error";
 
-
 function App() {
   const AuthContext = useContext(authContext);
   const { admin } = AuthContext;
@@ -17,19 +16,16 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />}/>
         <Route path="/recursos" element={<Resources />} />
         <Route path="/sobre-mi" element={<AboutMe />} />
-        
+
         <Route path="/articles/:id" element={<Articles />} />
         <Route
           path="/editar-blog/:id"
           element={admin ? <Editar /> : <Error />}
         />
-        <Route
-          path="/escribir-blog"
-          element={admin ? <Write /> : <Error />}
-        />
+        <Route path="/escribir-blog" element={admin ? <Write /> : <Error />} />
       </Routes>
     </Router>
   );

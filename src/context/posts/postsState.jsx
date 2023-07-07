@@ -7,10 +7,28 @@ const PostsState = ({ children }) => {
   const AuthContext = useContext(authContext);
   const { token } = AuthContext;
 
+  const [posts, setPosts] = useState([]);
   const [postDelete, setPostDelete] = useState(false);
   const [search, setSearch] = useState([]);
   const [categoryResources, setCategoryResources] = useState(null);
   const [lastPosts, setLastPosts] = useState({});
+
+  const getPost = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
+      const endpoint = `${apiUrl}/api/articles`;
+      const response = await fetch(endpoint);
+
+      if (!response.ok) {
+        throw new Error("Error al obtener los datos");
+      }
+
+      const data = await response.json();
+      setPosts(data.items);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const crearPosts = async (file, data) => {
     const formData = new FormData();
@@ -127,7 +145,10 @@ const PostsState = ({ children }) => {
         setCategoryResources,
         categoryResources,
         getLastPost,
-        lastPosts
+        lastPosts,
+        getPost,
+        posts,
+        setPosts,
       }}>
       {children}
     </postsContext.Provider>

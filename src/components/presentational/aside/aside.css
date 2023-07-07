@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 13px;
 }
 
 .container-sidebar .sidebar-item p{
@@ -17,7 +17,6 @@
   line-height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 20px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -30,12 +29,16 @@
   object-fit: cover;
 }
 
+.title-aside{
+  font-size: 19px;
+}
+
 .email-input-sidebar {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
 }
 
 .email-input-sidebar input {
@@ -57,4 +60,11 @@
 
 .email-input-sidebar button:hover {
   background-color: #333;
+}
+
+.email-input-sidebar span{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 19px;
 }

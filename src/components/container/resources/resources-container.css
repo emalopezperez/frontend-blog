@@ -12,6 +12,13 @@
   gap: 35px;
 }
 
+.container-loader-resources{
+  width: 100%;
+  height: 290px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: 767px){
   
