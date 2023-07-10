@@ -66,6 +66,11 @@ const TopBar = () => {
           <li>
             <Link to="/">Blog</Link>
           </li>
+          {usuario && (
+            <li>
+              <Link to="/perfil-user">Perfil</Link>
+            </li>
+          )}
           <li>
             <Link to="/recursos">Recursos</Link>
           </li>

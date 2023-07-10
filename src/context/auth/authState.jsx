@@ -9,6 +9,7 @@ const AuthState = ({ children }) => {
   const [registrado, setRegistrado] = useState(false);
   const [usuario, setUsuario] = useState(false);
   const [admin, setAdmin] = useState(false);
+  const [likesUser, setLikesUser] = useState([]);
 
   useEffect(() => {
     const storedToken = Cookies.get("token");
@@ -53,10 +54,12 @@ const AuthState = ({ children }) => {
 
       const nombre = responseData.usuario.nombre;
       const email = responseData.usuario.email;
+      const id = responseData.usuario._id;
 
       const user = {
         nombre: nombre,
         email: email,
+        id: id,
       };
 
       const usuario = JSON.stringify(user);
@@ -95,7 +98,7 @@ const AuthState = ({ children }) => {
     }, 300);
   };
 
-  const singUp  = async (data) => {
+  const singUp = async (data) => {
     const apiUrl = import.meta.env.VITE_DEPLOY_URL;
     try {
       const response = await fetch(`${apiUrl}/api/auth/signup`, {
@@ -115,6 +118,28 @@ const AuthState = ({ children }) => {
     }
   };
 
+  const getUserLikes = async () => {
+    const userId = usuario.id;
+
+    console.log(userId)
+
+    try {
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
+      let response = await fetch(`${apiUrl}/api/user/likes/${userId}`, {
+        method: "GET",
+        headers: {
+          "x-access-token": token,
+        },
+      });
+
+      response = await response.json();
+
+      setLikesUser(response.articles);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <authContext.Provider
       value={{
@@ -122,10 +147,12 @@ const AuthState = ({ children }) => {
         autenticado,
         login,
         logout,
-        singUp ,
+        singUp,
         registrado,
         usuario,
         admin,
+        getUserLikes,
+        likesUser
       }}>
       {children}
     </authContext.Provider>

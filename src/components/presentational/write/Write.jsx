@@ -80,29 +80,28 @@ const Write = () => {
       <Toaster position="top-right" reverseOrder={false} />
       <Toaster position="top-right" reverseOrder={false} />
       <form className="writeForm" onSubmit={handleSubmit}>
-        {previewImage ? (
-          <img
-            className="writeImg"
-            src={previewImage}
-            alt="Vista previa de la imagen"
-          />
-        ) : (
-          <div className="writeFormFile">
-            <h2>Seleccionar Imagen</h2>
-            <label htmlFor="fileInput">
-              <i className="writeIcon fas fa-plus"></i>
-            </label>
-            <input
-              name="file"
-              type="file"
-              id="fileInput"
-              style={{ display: "none" }}
-              onChange={handleFileChange}
-            />
-          </div>
-        )}
-
         <section className="title-select">
+          {previewImage ? (
+            <img
+              className="writeImg"
+              src={previewImage}
+              alt="Vista previa de la imagen"
+            />
+          ) : (
+            <div className="">
+              <label htmlFor="fileInput">
+                <i className="writeIcon fas fa-plus"></i>
+              </label>
+              <input
+                name="file"
+                type="file"
+                id="fileInput"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+            </div>
+          )}
+
           <input
             type="text"
             name="titulo"

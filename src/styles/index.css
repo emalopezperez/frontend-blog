@@ -31,3 +31,7 @@ li {
   text-decoration: none;
   list-style: none;
 }
+
+input{
+  outline: none;
+}
