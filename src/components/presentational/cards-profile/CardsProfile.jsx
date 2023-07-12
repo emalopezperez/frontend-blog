@@ -1,16 +1,17 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import "./card.css";
-import { useContext, useEffect, useState } from "react";
+import "./cards-profile.css";
 import Modal from "react-modal";
+import { useContext, useEffect, useState } from "react";
+import authContext from "../../../context/auth/authContext";
+import postsContext from "../../../context/posts/postsContext";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { formatDate } from "../../../helpers/formatDate";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { MdDelete as IconDelete } from "react-icons/md";
 import { AiFillEdit, AiOutlineLink } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
-import { formatDate } from "../../../helpers/formatDate";
-import authContext from "../../../context/auth/authContext";
-import postsContext from "../../../context/posts/postsContext";
 
 const customStyles = {
   overlay: {
@@ -35,36 +36,17 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-const Card = ({ post, imageSrc }) => {
+const CardProfile = ({ post, imageSrc }) => {
   const AuthContext = useContext(authContext);
-  const { admin, usuario } = AuthContext;
+  const { usuario } = AuthContext;
 
   const PostsContext = useContext(postsContext);
-  const { deletePost, postDelete, search, likesArticlesUser } = PostsContext;
+  const { search, deslikeArticlesUser, setLiked, isLiked } = PostsContext;
 
   const { contenido, titulo, fecha, _id, categoria } = post;
   const formattedDate = formatDate(fecha);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isLiked, setLiked] = useState(false);
-
-  const handleSubmit = () => {
-    deletePost(_id);
-  };
-
-  useEffect(() => {
-    if (postDelete) {
-      toast.success("Post eliminado correctamente!");
-
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 1000);
-    }
-  }, [postDelete]);
-
-  const handleModalToggle = () => {
-    setModalIsOpen(!modalIsOpen);
-  };
 
   useEffect(() => {
     if (!search.length) {
@@ -72,13 +54,29 @@ const Card = ({ post, imageSrc }) => {
     }
   }, [search]);
 
-  const like = async () => {
-    likesArticlesUser(_id);
-    toast.success("Post guardado correctamente!");
-
-    setModalIsOpen(false);
-    setLiked(true);
+  const handleModalToggle = () => {
+    setModalIsOpen(!modalIsOpen);
   };
+
+  const deslike = async () => {
+    try {
+      await deslikeArticlesUser(_id);
+      setLiked(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (isLiked) {
+      toast.success("Se eliminó el artículo guardado en tu perfil");
+      setModalIsOpen(false)
+      
+      setTimeout(() => {
+        window.location.reload();
+      }, 800);
+    }
+  }, [isLiked]);
 
   return (
     <section className="card-container">
@@ -96,25 +94,10 @@ const Card = ({ post, imageSrc }) => {
           }}>
           <div className="container-modal-buttons">
             <div className="buttons">
-              <Link to={`/editar-blog/${_id}`}>
-                <div className="">
-                  <AiFillEdit className="icons-buttons-modal icon-edit" />
-                </div>
-              </Link>
-              <span>Editar articulo</span>
-            </div>
-            <div className="buttons">
-              <div onClick={handleSubmit} className="">
-                <IconDelete className="icons-buttons-modal icon-delete" />
-              </div>
-              <span>Eliminar articulo</span>
-            </div>
-
-            <div className="buttons">
-              <div onClick={like} className="container-button-like">
+              <div onClick={deslike} className="container-button-like">
                 <label className="ui-bookmark">
                   <input type="checkbox" />
-                  <div className="bookmark">
+                  <div className="bookmark bookmark-perfil">
                     <svg viewBox="0 0 32 32">
                       <g>
                         <path d="M27 4v27a1 1 0 0 1-1.625.781L16 24.281l-9.375 7.5A1 1 0 0 1 5 31V4a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4z"></path>
@@ -123,26 +106,24 @@ const Card = ({ post, imageSrc }) => {
                   </div>
                 </label>
               </div>
-              <span>Guardar articulo</span>
+              <span>Eliminar articulo guardado</span>
             </div>
 
             <div className="buttons">
-              <div className="">
+              <div  className="">
                 <AiOutlineLink className="icons-buttons-modal" />
               </div>
-              <span>Copiar enlace </span>
+              <span>Copiar enlace del articulo </span>
             </div>
           </div>
         </div>
       </Modal>
 
-      {admin && (
-        <button onClick={handleModalToggle} className="containers-three-dots ">
-          <span>
-            <BsThreeDots className=" dots" />
-          </span>
-        </button>
-      )}
+      <button onClick={handleModalToggle} className="containers-three-dots ">
+        <span>
+          <BsThreeDots className=" dots" />
+        </span>
+      </button>
 
       <Toaster position="top-right" reverseOrder={false} />
       <Link to={`/articles/${_id}`}>
@@ -160,4 +141,4 @@ const Card = ({ post, imageSrc }) => {
   );
 };
 
-export default Card;
+export default CardProfile;

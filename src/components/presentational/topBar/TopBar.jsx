@@ -51,7 +51,7 @@ const TopBar = () => {
   }, []);
 
   const containerStyle = {
-    backgroundColor: scrollActive ? "rgba(0, 0, 0, 0.7)" : "transparent",
+    backgroundColor: scrollActive ? "rgba(0, 0, 0, 0.9)" : "transparent",
     color: scrollActive ? "#ffffff" : "#000000",
     transition: "background-color 0.5s ease, color 0.5s ease",
   };
@@ -60,7 +60,9 @@ const TopBar = () => {
     <header className="nav-container" style={containerStyle}>
       {/* Desktop*/}
       <nav className="">
-        <h1 className="titulo">Blog</h1>
+        <Link to="/">
+          <h1 className="titulo">Blog</h1>
+        </Link>
 
         <ul>
           <li>

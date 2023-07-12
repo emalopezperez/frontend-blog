@@ -12,7 +12,6 @@
   flex-direction: column;
   gap: 10px;
   background-color: white;
-  position: relative;
 }
 
 section article .categoria {
@@ -27,7 +26,6 @@ section article .date {
   font-family: "Lora", serif;
   font-style: italic;
   font-size: 12px;
-  
 }
 
 section article h3 {
@@ -46,6 +44,7 @@ section article img {
   object-fit: cover;
   margin: 0;
   border-radius: 0%;
+  position: relative;
 }
 
 .contenido-card {
@@ -66,68 +65,268 @@ section article img {
   font-weight: bold;
 }
 
-.containers-buttons-post {
+.container-modal-buttons{
+  height: 200px;
   display: flex;
-  gap: 10px;
-  position: absolute;
-  top: 0%;
-  right: 0;
-  z-index: 990;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.button-editar {
-  height: 20px;
-  width: 53px;
-  background-color: rgb(7, 113, 77);
-  cursor: pointer;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  border: none;
-  color: white;
-  padding: 2px;
-  font-size: 10px;
-  font-weight: bold;
-  z-index: 12;
-}
-
-.button-delete {
-  height: 20px;
-  width: 53px;
-  background-color: rgb(152, 15, 15);
-  cursor: pointer;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  border: none;
-  color: white;
-  padding: 2px;
-  font-size: 10px;
-  font-weight: bold;
-  z-index: 10;
-}
-
-.container-butons button:hover {
-  transform: scale(0.9);
-}
-
-.butons-modals-delete {
-  display: flex;
-  justify-content: center;
-  margin-top: 20%;
-}
-
-.butons-modals-delete button {
+.containers-three-dots {
+  width: 35px;
   height: 35px;
-  width: 80px;
-  background-color: rgb(152, 15, 15);
-  cursor: pointer;
-  border-radius: 0 0 10px 0;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  border: none;
-  color: white;
-  padding: 2px;
-  font-size: 13px;
-  z-index: 10;
+  align-items: center;
+  position: absolute;
+  top: 1%;
+  right: 6px;
+  z-index: 990;
+  border-radius: 100%;
+  padding: 3px;
+  border-style: none;
+  background-color: transparent;
+  transition: transform 0.4s ease-in-out;
 }
 
-.butons-modals-delete button:hover {
-  background-color: black;
+.dots{
   color: white;
+  font-size: 28px;
+}
+
+.containers-three-dots:hover {
+  background-color: rgb(207, 207, 207);
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons span {
+  font-size: 14px;
+}
+
+.icons-buttons-modal {
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+}
+
+.icons-buttons-modal:hover{
+  color: rgb(74, 73, 73);
+}
+
+.icon-delete{
+  color: darkred;
+}
+
+.icon-edit{
+  color: rgb(16, 77, 77);
+}
+
+
+.ui-bookmark {
+  --icon-size: 20px;
+  --icon-secondary-color: black;
+  --icon-hover-color: rgb(62, 62, 62);
+  --icon-primary-color: gold;
+  --icon-circle-border: 1px solid var(--icon-primary-color);
+  --icon-circle-size: 45px;
+  --icon-anmt-duration: 0.3s;
+}
+
+.ui-bookmark input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.ui-bookmark .bookmark {
+  width: var(--icon-size);
+  height: auto;
+  fill: var(--icon-secondary-color);
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  -webkit-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
+}
+
+.bookmark::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  -webkit-box-shadow: 0 30px 0 -4px var(--icon-primary-color),
+    30px 0 0 -4px var(--icon-primary-color),
+    0 -30px 0 -4px var(--icon-primary-color),
+    -30px 0 0 -4px var(--icon-primary-color),
+    -22px 22px 0 -4px var(--icon-primary-color),
+    -22px -22px 0 -4px var(--icon-primary-color),
+    22px -22px 0 -4px var(--icon-primary-color),
+    22px 22px 0 -4px var(--icon-primary-color);
+  box-shadow: 0 30px 0 -4px var(--icon-primary-color),
+    30px 0 0 -4px var(--icon-primary-color),
+    0 -30px 0 -4px var(--icon-primary-color),
+    -30px 0 0 -4px var(--icon-primary-color),
+    -22px 22px 0 -4px var(--icon-primary-color),
+    -22px -22px 0 -4px var(--icon-primary-color),
+    22px -22px 0 -4px var(--icon-primary-color),
+    22px 22px 0 -4px var(--icon-primary-color);
+  border-radius: 50%;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.bookmark::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: var(--icon-circle-border);
+  opacity: 0;
+}
+
+/* actions */
+
+.ui-bookmark:hover .bookmark {
+  fill: var(--icon-hover-color);
+}
+
+.ui-bookmark input:checked + .bookmark::after {
+  -webkit-animation: circles var(--icon-anmt-duration)
+    cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: circles var(--icon-anmt-duration)
+    cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  -webkit-animation-delay: var(--icon-anmt-duration);
+  animation-delay: var(--icon-anmt-duration);
+}
+
+.ui-bookmark input:checked + .bookmark {
+  fill: var(--icon-primary-color);
+  -webkit-animation: bookmark var(--icon-anmt-duration) forwards;
+  animation: bookmark var(--icon-anmt-duration) forwards;
+  -webkit-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+.ui-bookmark input:checked + .bookmark::before {
+  -webkit-animation: circle var(--icon-anmt-duration)
+    cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: circle var(--icon-anmt-duration)
+    cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  -webkit-animation-delay: var(--icon-anmt-duration);
+  animation-delay: var(--icon-anmt-duration);
+}
+
+@-webkit-keyframes bookmark {
+  50% {
+    -webkit-transform: scaleY(0.6);
+    transform: scaleY(0.6);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bookmark {
+  50% {
+    -webkit-transform: scaleY(0.6);
+    transform: scaleY(0.6);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@-webkit-keyframes circle {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  90% {
+    width: var(--icon-circle-size);
+    height: var(--icon-circle-size);
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes circle {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  90% {
+    width: var(--icon-circle-size);
+    height: var(--icon-circle-size);
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes circles {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes circles {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+.bookmark {
+  color: gold;
 }

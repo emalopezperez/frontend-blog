@@ -120,9 +120,6 @@ const AuthState = ({ children }) => {
 
   const getUserLikes = async () => {
     const userId = usuario.id;
-
-    console.log(userId)
-
     try {
       const apiUrl = import.meta.env.VITE_DEPLOY_URL;
       let response = await fetch(`${apiUrl}/api/user/likes/${userId}`, {
@@ -152,7 +149,7 @@ const AuthState = ({ children }) => {
         usuario,
         admin,
         getUserLikes,
-        likesUser
+        likesUser,
       }}>
       {children}
     </authContext.Provider>

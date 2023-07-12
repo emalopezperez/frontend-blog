@@ -208,6 +208,17 @@ h2 {
   cursor: pointer;
 }
 
+.cerrar-sesion{
+  width: 98%;
+  height: 30px;
+  margin-top: 40px;
+  background-color: #e50914;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 /* Dispositivos móviles */
 .container-movil {
   display: none;

@@ -1,0 +1,21 @@
+.container-button-like-perfil {
+  position: absolute;
+  top: 20%;
+  right: 50%;
+  z-index: 990;
+}
+
+.ui-bookmark .bookmark-perfil {
+  fill: gold;;
+  width:26px;
+}
+
+.container-modal-buttons{
+  justify-content: space-evenly;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -5,13 +5,14 @@ import authContext from "../auth/authContext";
 
 const PostsState = ({ children }) => {
   const AuthContext = useContext(authContext);
-  const { token } = AuthContext;
+  const { token, usuario } = AuthContext;
 
   const [posts, setPosts] = useState([]);
   const [postDelete, setPostDelete] = useState(false);
   const [search, setSearch] = useState([]);
   const [categoryResources, setCategoryResources] = useState(null);
   const [lastPosts, setLastPosts] = useState({});
+  const [isLiked, setLiked] = useState(false);
 
   const getPost = async () => {
     try {
@@ -133,6 +134,55 @@ const PostsState = ({ children }) => {
       .catch((error) => console.log(error));
   };
 
+  const likesArticlesUser = async (id) => {
+    const userId = usuario.id.toString();
+
+    try {
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
+      const response = await fetch(`${apiUrl}/api/article/like/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": token,
+        },
+        body: JSON.stringify({ userId }),
+      });
+
+      const responseData = await response.json();
+
+      console.log(responseData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deslikeArticlesUser = async (id) => {
+    const userId = usuario.id.toString();
+
+    try {
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
+      const response = await fetch(`${apiUrl}/api/article/deslike/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": token,
+        },
+        body: JSON.stringify({ userId }),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        setLiked(true);
+        console.log(responseData);
+      } else {
+        console.log(responseData.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <postsContext.Provider
       value={{
@@ -149,6 +199,10 @@ const PostsState = ({ children }) => {
         getPost,
         posts,
         setPosts,
+        likesArticlesUser,
+        deslikeArticlesUser,
+        isLiked,
+        setLiked
       }}>
       {children}
     </postsContext.Provider>

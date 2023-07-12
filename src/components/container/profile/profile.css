@@ -10,3 +10,15 @@
 .container-profile-user h2{
   margin-bottom: 4%;
 }
+
+
+.container-profile-user {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 10%;
+  align-items: center;
+  justify-items: center;
+  gap: 22px;
+}
+
