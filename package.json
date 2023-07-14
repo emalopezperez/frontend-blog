@@ -22,7 +22,6 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.11.2",
     "react-scroll": "^1.8.9",
-    "react-simple-typewriter": "^5.0.1",
     "remark-slug": "^7.0.1"
   },
   "devDependencies": {

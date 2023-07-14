@@ -15,7 +15,6 @@ const ArticlesContainer = ({ id }) => {
 
       response = await response.json();
       setArticle(response.item);
-
     } catch (error) {
       console.log(error);
     }
@@ -27,12 +26,9 @@ const ArticlesContainer = ({ id }) => {
     }
   }, [id]);
 
-
   return (
     <main>
-      <DetailArticles article={article}
-      imageSrc={article.imagen}
-      />
+      <DetailArticles article={article} imageSrc={article.imagen} />
     </main>
   );
 };

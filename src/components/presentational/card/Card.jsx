@@ -80,6 +80,8 @@ const Card = ({ post, imageSrc }) => {
     setLiked(true);
   };
 
+
+  
   return (
     <section className="card-container">
       <Modal
