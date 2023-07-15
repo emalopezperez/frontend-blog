@@ -94,11 +94,11 @@ textarea {
 }
 
 .writeForm .descripcion {
-  height: 140px;
+  height: 25px;
 }
 
 .markdown {
-  height: 180px;
+  height: 160px;
 }
 
 .writeForm input[type="submit"] {

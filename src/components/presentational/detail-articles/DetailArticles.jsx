@@ -1,31 +1,70 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import JoditEditor from "jodit-react";
 import "./detail-articles.css";
 import AsideDetailArticles from "../aside/AsideDetailArticles";
 import { formatDate } from "../../../helpers/formatDate";
-import ReactMarkdown from "react-markdown";
+import { Element as ScrollElement } from "react-scroll";
 
 const DetailArticles = ({ article, imageSrc }) => {
   const { titulo, autor, markdown, categoria, contenido, fecha } = article;
 
   const [indice, setIndice] = useState([]);
+  const [content, setContent] = useState({});
 
   const formattedDate = formatDate(fecha);
 
   useEffect(() => {
-    const headings = document.querySelectorAll("h3");
-    const ids = [];
-    headings.forEach((heading) => {
-      const id = heading.textContent.toLowerCase().replace(/\s+/g, "-");
-      heading.setAttribute("id", id);
-      ids.push(id);
-    });
-    setIndice(ids);
-  }, [markdown]);
-
-  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    const container = document.createElement("div");
+    container.innerHTML = markdown;
+  
+    const headings = container.querySelectorAll("h1, h2, h3");
+    const encabezados = [];
+    headings.forEach((heading) => {
+      const headingText = heading.textContent.trim();
+      const id = headingText
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/-+$/, "");
+      heading.setAttribute("id", id);
+  
+      encabezados.push(id);
+    });
+  
+    setContent(container.innerHTML);
+    setIndice(encabezados);
+  }, [markdown]);
+  
+  const editorRef = useRef(null);
+
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.value = content;
+    }
+  }, [content]);
+
+  const config = {
+    toolbar: false,
+    showCharsCounter: false,
+    showWordsCounter: false,
+    showXPathInStatusbar: false,
+    buttons: [],
+    readonly: true,
+    width: "100%",
+    height: "100%",
+    resizable: false,
+    allowResizeX: false,
+    allowResizeY: false,
+    style: {
+      overflow: "hidden",
+      border: "none !important",
+    },
+    charset: "UTF-8",
+  };
 
   return (
     <main className="container">
@@ -38,12 +77,13 @@ const DetailArticles = ({ article, imageSrc }) => {
               <h4 className="article-date">Fecha: {formattedDate}</h4>
             </section>
             <h3 className="article-title">{titulo}</h3>
+            <ScrollElement name="main-content">
+              <p className="contenido">{contenido} </p>
 
-            <p className="contenido">{contenido}</p>
-            <div id="mi-contenedor">
-              <ReactMarkdown>{markdown}</ReactMarkdown>
-            </div>
-
+              <div id="mi-contenedor">
+                <JoditEditor ref={editorRef} config={config} readOnly={true} />
+              </div>
+            </ScrollElement>
             <p className="article-date">
               <span>Autor: </span>
               {autor}

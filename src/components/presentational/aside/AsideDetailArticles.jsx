@@ -12,7 +12,11 @@ const AsideDetailArticles = ({ indice }) => {
             const formattedElement = element.replace(/-/g, " ");
             return (
               <li key={element} className="index-item">
-                <ScrollLink to={element} smooth={true} duration={500} offset={-80}>
+                <ScrollLink
+                  to={element}
+                  smooth={true}
+                  duration={500}
+                  offset={-80}>
                   {formattedElement}
                 </ScrollLink>
               </li>
