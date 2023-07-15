@@ -41,7 +41,7 @@ const PostsState = ({ children }) => {
     formData.append("imagen", file);
 
     try {
-      const apiUrl = import.meta.env.VITE_LOCAL_URL;
+      const apiUrl = import.meta.env.VITE_DEPLOY_URL;
       let response = await fetch(`${apiUrl}/api/create`, {
         method: "POST",
         headers: {
