@@ -18,34 +18,15 @@ const DetailArticles = ({ article, imageSrc }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    const container = document.createElement("div");
-    container.innerHTML = markdown;
-  
-    const headings = container.querySelectorAll("h1, h2, h3");
-    const encabezados = [];
-    headings.forEach((heading) => {
-      const headingText = heading.textContent.trim();
-      const id = headingText
-        .toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/-+$/, "");
-      heading.setAttribute("id", id);
-  
-      encabezados.push(id);
-    });
-  
-    setContent(container.innerHTML);
-    setIndice(encabezados);
-  }, [markdown]);
   
   const editorRef = useRef(null);
 
   useEffect(() => {
     if (editorRef.current) {
-      editorRef.current.value = content;
+      
+      editorRef.current.value = markdown;
     }
-  }, [content]);
+  }, [markdown]);
 
   const config = {
     toolbar: false,
