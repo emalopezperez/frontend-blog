@@ -9,8 +9,6 @@ import { Element as ScrollElement } from "react-scroll";
 const DetailArticles = ({ article, imageSrc }) => {
   const { titulo, autor, markdown, categoria, contenido, fecha } = article;
 
-  console.log(markdown);
-
   const [indice, setIndice] = useState([]);
   const [content, setContent] = useState("");
 
@@ -21,34 +19,33 @@ const DetailArticles = ({ article, imageSrc }) => {
   }, []);
 
   useEffect(() => {
-    // const container = document.createElement("div");
-    // container.innerHTML = markdown;
-  
-    // const headings = container.querySelectorAll("h1, h2, h3");
-    // const encabezados = [];
-    // headings.forEach((heading) => {
-    //   const headingText = heading.textContent.trim();
-    //   const id = headingText
-    //     .toLowerCase()
-    //     .replace(/\s+/g, "-")
-    //     .replace(/-+$/, "");
-    //   heading.setAttribute("id", id);
-  
-    //   encabezados.push(id);
-    // });
-  
-    // setContent(container.innerHTML);
-    // setIndice(encabezados);
+    const container = document.createElement("div");
+    container.innerHTML = markdown;
+
+    const headings = container.querySelectorAll("h1, h2, h3");
+    const encabezados = [];
+    headings.forEach((heading) => {
+      const headingText = heading.textContent.trim();
+      const id = headingText
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/-+$/, "");
+      heading.setAttribute("id", id);
+
+      encabezados.push(id);
+    });
+
+    setContent(container.innerHTML);
+    setIndice(encabezados);
   }, [markdown]);
-  
 
   const editorRef = useRef(null);
 
   useEffect(() => {
     if (editorRef.current) {
-      editorRef.current.value = markdown;
+      editorRef.current.value = content;
     }
-  }, [markdown]);
+  }, [content]);
 
   const config = {
     toolbar: false,
@@ -63,7 +60,6 @@ const DetailArticles = ({ article, imageSrc }) => {
     allowResizeX: false,
     allowResizeY: false,
     style: {
-      overflow: "hidden",
       border: "none !important",
     },
     charset: "UTF-8",
