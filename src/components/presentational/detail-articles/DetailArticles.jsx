@@ -9,6 +9,8 @@ import { Element as ScrollElement } from "react-scroll";
 const DetailArticles = ({ article, imageSrc }) => {
   const { titulo, autor, markdown, categoria, contenido, fecha } = article;
 
+  console.log(markdown);
+
   const [indice, setIndice] = useState([]);
   const [content, setContent] = useState("");
 
@@ -19,33 +21,34 @@ const DetailArticles = ({ article, imageSrc }) => {
   }, []);
 
   useEffect(() => {
-    const container = document.createElement("div");
-    container.innerHTML = markdown;
-
-    const headings = container.querySelectorAll("h1, h2, h3");
-    const encabezados = [];
-    headings.forEach((heading) => {
-      const headingText = heading.textContent.trim();
-      const id = headingText
-        .toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/-+$/, "");
-      heading.setAttribute("id", id);
-
-      encabezados.push(id);
-    });
-
-    setContent(container.innerHTML);
-    setIndice(encabezados);
+    // const container = document.createElement("div");
+    // container.innerHTML = markdown;
+  
+    // const headings = container.querySelectorAll("h1, h2, h3");
+    // const encabezados = [];
+    // headings.forEach((heading) => {
+    //   const headingText = heading.textContent.trim();
+    //   const id = headingText
+    //     .toLowerCase()
+    //     .replace(/\s+/g, "-")
+    //     .replace(/-+$/, "");
+    //   heading.setAttribute("id", id);
+  
+    //   encabezados.push(id);
+    // });
+  
+    // setContent(container.innerHTML);
+    // setIndice(encabezados);
   }, [markdown]);
+  
 
   const editorRef = useRef(null);
 
   useEffect(() => {
     if (editorRef.current) {
-      editorRef.current.value = content;
+      editorRef.current.value = markdown;
     }
-  }, [content]);
+  }, [markdown]);
 
   const config = {
     toolbar: false,
@@ -80,9 +83,12 @@ const DetailArticles = ({ article, imageSrc }) => {
             <ScrollElement name="main-content">
               <p className="contenido">{contenido}</p>
 
-              <div id="mi-contenedor">
-                <JoditEditor ref={editorRef} config={config} value={content} readOnly={true} />
-              </div>
+              <JoditEditor
+                ref={editorRef}
+                config={config}
+                value={content}
+                readOnly={true}
+              />
             </ScrollElement>
             <p className="article-date">
               <span>Autor: </span>
