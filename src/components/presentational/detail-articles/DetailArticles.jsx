@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import JoditEditor from "jodit-react";
 import "./detail-articles.css";
@@ -10,7 +10,7 @@ const DetailArticles = ({ article, imageSrc }) => {
   const { titulo, autor, markdown, categoria, contenido, fecha } = article;
 
   const [indice, setIndice] = useState([]);
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState("");
 
   const formattedDate = formatDate(fecha);
 
@@ -18,15 +18,34 @@ const DetailArticles = ({ article, imageSrc }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  
+  useEffect(() => {
+    const container = document.createElement("div");
+    container.innerHTML = markdown;
+
+    const headings = container.querySelectorAll("h1, h2, h3");
+    const encabezados = [];
+    headings.forEach((heading) => {
+      const headingText = heading.textContent.trim();
+      const id = headingText
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/-+$/, "");
+      heading.setAttribute("id", id);
+
+      encabezados.push(id);
+    });
+
+    setContent(container.innerHTML);
+    setIndice(encabezados);
+  }, [markdown]);
+
   const editorRef = useRef(null);
 
   useEffect(() => {
     if (editorRef.current) {
-      
-      editorRef.current.value = markdown;
+      editorRef.current.value = content;
     }
-  }, [markdown]);
+  }, [content]);
 
   const config = {
     toolbar: false,
@@ -59,10 +78,10 @@ const DetailArticles = ({ article, imageSrc }) => {
             </section>
             <h3 className="article-title">{titulo}</h3>
             <ScrollElement name="main-content">
-              <p className="contenido">{contenido} </p>
+              <p className="contenido">{contenido}</p>
 
               <div id="mi-contenedor">
-                <JoditEditor ref={editorRef} config={config} readOnly={true} />
+                <JoditEditor ref={editorRef} config={config} value={content} readOnly={true} />
               </div>
             </ScrollElement>
             <p className="article-date">
