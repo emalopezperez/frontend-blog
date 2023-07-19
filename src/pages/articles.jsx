@@ -6,9 +6,7 @@ const Articles = () => {
   const { id } = useParams();
   return (
     <div>
-      <main className="">
-        <ArticlesContainer id={id} />
-      </main>
+      <ArticlesContainer id={id} />
     </div>
   );
 };

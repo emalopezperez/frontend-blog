@@ -1,52 +1,20 @@
-.container-article {
+.container-article-detail {
+  height: 100%;
+  width: 100%;
   margin-top: 3%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  grid-template-columns: 4fr 1fr;
-  height: 100%;
-  position: relative;
-}
-
-.aside-article-detail {
-  width: 100%;
-  height: 100%;
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
-  display: flex;
-  justify-content: center;
-  border-radius: 5px;
-
-  position: fixed;
-  top: 14%;
-  left: 78%;
-  width: 20%;
-  overflow-y: auto;
-}
-
-.main {
-  width: 100%;
-  height: 100%;
-  grid-column: 1 / 2;
   display: flex;
   justify-content: center;
 }
 
-.container-article {
+.main-article-detail {
   height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10%;
-}
-.container-article article {
-  width: 90%;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  margin-bottom: 10%;
 }
+
 .container-article-span {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,16 +23,17 @@
   padding-right: 30px;
 }
 
-.container-article .article-title,h3 {
+.article-title,
+h3 {
   font-family: "Josefin Sans", sans-serif;
   font-size: 32px;
   margin-top: 20px;
   font-weight: bold;
 }
 
-.container-article .image-article {
+.image-article {
   width: 100%;
-  height: 280px;
+  height: 300px;
   object-fit: cover;
   border-radius: 7px;
   margin-top: 0;
@@ -78,18 +47,14 @@
   color: black;
 }
 
-#mi-contenedor h3 {
-  margin-top: 40px;
-}
-
-.container-article p {
+.main-article-detail p {
   text-align: justify;
   font-size: 18px;
   font-family: "Arial", sans-serif;
   line-height: 32px;
 }
 
-.container-article .contenido:first-letter {
+.main-article-detail:first-letter {
   font-size: 40px;
   font-weight: bold;
   float: left;
@@ -97,13 +62,61 @@
   line-height: 0.8;
 }
 
+.modal-aside-indice {
+  z-index: 900;
+  position: fixed;
+  top: 19%;
+  right: 5%;
+  height: 100%;
+}
 
+.modal-aside-indice button {
+  z-index: 1000;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: transparent;
+  border-style: none;
+  font-size: 22px;
+}
+
+.x{
+  background-color: transparent;
+}
 @media (max-width: 768px) {
-  .aside-article-detail {
-    display: none;
+  .image-article {
+    height: 200px;
+  }
+  .modal-aside-indice {
+    position: absolute;
+    top: 15%;
+    right: 40%;
+  }
+  
+  .modal-aside-indice button {
+    z-index: 1000;
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    background: white;
+    border-style: none;
+    border: solid 1px black;
+    font-size: 22px;
+  }
+  .container-article {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .container-article .image-article {
+  .container-info {
+    width: 100%;
+  }
+
+  .container-info article {
+    width: 100%;
+  }
+
+  .container-info .image-article {
     height: auto;
   }
 

@@ -11,6 +11,7 @@ const DetailArticles = ({ article, imageSrc }) => {
 
   const [indice, setIndice] = useState([]);
   const [content, setContent] = useState("");
+  const [modalAside, setModalAside] = useState(false);
 
   const formattedDate = formatDate(fecha);
 
@@ -54,8 +55,6 @@ const DetailArticles = ({ article, imageSrc }) => {
     showXPathInStatusbar: false,
     buttons: [],
     readonly: true,
-    width: "100%",
-    height: "100%",
     resizable: false,
     allowResizeX: false,
     allowResizeY: false,
@@ -63,39 +62,54 @@ const DetailArticles = ({ article, imageSrc }) => {
       border: "none !important",
     },
     charset: "UTF-8",
+    autoresize: true,
+  };
+
+  const handleModalToggle = () => {
+    setModalAside(!modalAside);
   };
 
   return (
-    <main className="container">
-      <section className="main">
-        <section className="container-article">
-          <article>
-            <img className="image-article" src={imageSrc} alt={titulo} />
-            <section className="container-article-span">
-              <h4>{categoria}</h4>
-              <h4 className="article-date">Fecha: {formattedDate}</h4>
-            </section>
-            <h3 className="article-title">{titulo}</h3>
-            <ScrollElement name="main-content">
-              <p className="contenido">{contenido}</p>
+    <main className="container-article-detail">
+      <section id="main-content" className="main-article-detail">
+        <img className="image-article" src={imageSrc} alt={titulo} />
 
-              <JoditEditor
-                ref={editorRef}
-                config={config}
-                value={content}
-                readOnly={true}
-              />
-            </ScrollElement>
-            <p className="article-date">
-              <span>Autor: </span>
-              {autor}
-            </p>
-          </article>
+        <section className="container-article-span">
+          <h4>{categoria}</h4>
+          <h4 className="article-date">Fecha: {formattedDate}</h4>
         </section>
+        <h3 className="article-title">{titulo}</h3>
+        <p className="contenido">{contenido}</p>
+
+        <JoditEditor
+          ref={editorRef}
+          config={config}
+          value={content}
+          readOnly={true}
+        />
+
+        <p className="article-date">
+          <span>Autor: </span>
+          {autor}
+        </p>
       </section>
-      <aside className="aside-article-detail">
-        <AsideDetailArticles indice={indice} />
-      </aside>
+
+      <div className="modal-aside-indice">
+        <button onClick={handleModalToggle} className="">
+          {modalAside ? (
+            <h6 className="x">
+              X
+            </h6>
+          ) : (
+            <h6>Indice</h6>
+          )}
+        </button>
+        {modalAside && (
+          <aside className="aside-article-detail">
+            <AsideDetailArticles indice={indice} />
+          </aside>
+        )}
+      </div>
     </main>
   );
 };
