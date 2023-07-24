@@ -145,11 +145,6 @@ const TopBar = () => {
             </button>
           </section>
 
-          {navMobilOpen && (
-            <div className="modal-nav-mobil">
-              {/* Contenido del modal */} hola
-            </div>
-          )}
         </nav>
       )}
 

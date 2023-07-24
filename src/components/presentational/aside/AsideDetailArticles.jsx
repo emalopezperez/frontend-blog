@@ -11,7 +11,7 @@ const AsideDetailArticles = ({ indice }) => {
           {indice.map((element) => {
             const formattedElement = element.replace(/-/g, " ");
             return (
-              <li key={element} className="index-item">
+              <li key={element} className="index-item hover:bg-black/80 hover:text-white">
                 <ScrollLink
                   to={element}
                   smooth={true}

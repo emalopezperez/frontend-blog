@@ -1,12 +1,12 @@
 .container-sidebar-index {
   height: 100%;
   width: 100%;
-  background-color: black;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  border: solid 1px #161d27;
 }
 
 .sidebar-index {
@@ -24,7 +24,6 @@
   border-bottom: 1px solid #848181;
   font-family: "Varela Round", sans-serif;
   font-size: 14px;
-  color: white;
   font-weight: bold;
   line-height: 20px;
   text-align: center;
@@ -44,13 +43,7 @@
   font-size: 16px;
   text-align: center;
   line-height: 20px;
-  color: white;
   padding: 4px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
-}
-
-.index-item:hover {
-  background-color: white;
-  color: black;
 }
