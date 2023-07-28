@@ -13,7 +13,7 @@ import Error from "./pages/error";
 
 function App() {
   const AuthContext = useContext(authContext);
-  const { admin , usuario} = AuthContext;
+  const { admin, usuario } = AuthContext;
 
   return (
     <Router>
@@ -21,7 +21,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recursos" element={<Resources />} />
-        <Route path="/sobre-mi" element={<AboutMe />} />
 
         <Route path="/articles/:id" element={<Articles />} />
         <Route
@@ -29,7 +28,10 @@ function App() {
           element={admin ? <Editar /> : <Error />}
         />
         <Route path="/escribir-blog" element={admin ? <Write /> : <Error />} />
-        <Route path="/perfil-user" element={usuario ? <Profile /> : <Error />} />
+        <Route
+          path="/perfil-user"
+          element={usuario ? <Profile /> : <Error />}
+        />
       </Routes>
     </Router>
   );

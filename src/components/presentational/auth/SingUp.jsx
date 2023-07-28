@@ -83,7 +83,7 @@ const SingUp = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <input type="submit" className="sign" value="Registrarse" />
+        <input type="submit " className="bg-white sign" value="Registrarse" />
       </form>
 
       <p className="signup">

@@ -24,8 +24,8 @@ const Modal = ({ sowModal, setSowModal, children }) => {
     <>
       {sowModal ? (
         <section className="modal">
-          <button onClick={click} className="modal-close">
-            <span>
+          <button onClick={click} className="bg-white rounded-[100%] w-6 absolute top-10 left-20  ">
+            <span className="text-black ">
               X
             </span>
           </button>

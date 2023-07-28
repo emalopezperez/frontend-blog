@@ -12,8 +12,8 @@
 .posts {
   width: 90%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(305px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(405px, 1fr));
+  gap: 30px;
 }
 
 .pagination {

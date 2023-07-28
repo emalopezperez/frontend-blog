@@ -51,7 +51,7 @@ const TopBar = () => {
   }, []);
 
   const containerStyle = {
-    backgroundColor: scrollActive ? "rgba(0, 0, 0, 0.9)" : "transparent",
+    backgroundColor: scrollActive ? "#0f0e17" : "transparent",
     color: scrollActive ? "#ffffff" : "#000000",
     transition: "background-color 0.5s ease, color 0.5s ease",
   };
@@ -61,12 +61,12 @@ const TopBar = () => {
       {/* Desktop*/}
       <nav className="">
         <Link to="/">
-          <h1 className="titulo">Blog</h1>
+          <h1 className="text-3xl titulo">Blog</h1>
         </Link>
 
         <ul>
           <li>
-            <Link to="/">Blog</Link>
+            <Link to="/">Articulos</Link>
           </li>
           {usuario && (
             <li>
@@ -75,9 +75,6 @@ const TopBar = () => {
           )}
           <li>
             <Link to="/recursos">Recursos</Link>
-          </li>
-          <li>
-            <Link to="/sobre-mi">Sobre mi</Link>
           </li>
           <li>
             <Link to="/escribir-blog">Escribir</Link>
@@ -101,7 +98,7 @@ const TopBar = () => {
             </div>
           )}
           {autenticado ? (
-            <div className=" " onClick={handleOnClickModal}>
+            <div className="" onClick={handleOnClickModal}>
               <FaUserAstronaut
                 onClick={handleOnClickModal}
                 className="icons-user"
@@ -109,7 +106,7 @@ const TopBar = () => {
             </div>
           ) : (
             <div className="buttons-containers-user">
-              <button onClick={openModalLogin} className="button-login">
+              <button onClick={openModalLogin} className=" button-login">
                 <span>Login</span>
               </button>
 
@@ -122,30 +119,92 @@ const TopBar = () => {
       </nav>
 
       {/* Mobil */}
-      <section className="container-movil">
-        <h2 className="h2">blog</h2>
+
+      <section className="z-50 container-movil">
+        <Link to="/">
+          <h2
+            className="text-4xl"
+            style={{ color: scrollActive ? "#ffffff" : "#000000" }}>
+            Blog
+          </h2>
+        </Link>
         <button
           className={`hamburger ${navMobilOpen ? "open" : ""}`}
           onClick={handleOnClick}>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span
+            style={{
+              backgroundColor: scrollActive ? "#ffffff" : "#000000",
+            }}></span>
+          <span
+            style={{
+              backgroundColor: scrollActive ? "#ffffff" : "#000000",
+            }}></span>
+          <span
+            style={{
+              backgroundColor: scrollActive ? "#ffffff" : "#000000",
+            }}></span>
         </button>
       </section>
 
       {navMobilOpen && (
-        <nav className={` ${navMobilOpen ? "open" : ""}`}>
-          <section className="info">
-            <h2 className="h2">blog</h2>
-            <button
-              className={`hamburger-cruz ${navMobilOpen ? "open" : ""}`}
-              onClick={() => setNavMobilOpen(true)}>
-              <span></span>
-              <span></span>
-            </button>
-          </section>
+        <div className="absolute w-[80%] h-[70%] top-16 left-0">
+          <div className="flex flex-col w-full h-[300px] bg-[#0f0e17] justify-between px-2 rounded-r-2xl pb-3">
+            <div className="flex flex-col gap-5 mt-4 text-white">
+              <li className="hover:bg-white hover:text-[#0f0e17] pointer p-2 rounded-sm">
+                <Link to="/">Articulos</Link>
+              </li>
+              {usuario && (
+                <li className="hover:bg-white hover:text-[#0f0e17] pointer p-2 rounded-sm">
+                  <Link to="/perfil-user">Perfil</Link>
+                </li>
+              )}
+              <li className="hover:bg-white hover:text-[#0f0e17] pointer p-2 rounded-sm">
+                <Link to="/recursos">Recursos</Link>
+              </li>
+              <li className="hover:bg-white hover:text-[#0f0e17] pointer p-2 rounded-sm">
+                <Link to="/escribir-blog">Escribir</Link>
+              </li>
+            </div>
 
-        </nav>
+            {openModalUser && (
+              <div className=" modal-user">
+                <p>{usuario.nombre}</p>
+                <p>
+                  <span>{usuario.email}</span>
+                </p>
+
+                <p>
+                  <span>Rol: </span>
+                  {admin ? "Admin" : "Usuario"}
+                </p>
+
+                <button
+                  onClick={logout}
+                  className="top-list-item cerrar-sesion">
+                  <span>Cerrar</span>
+                </button>
+              </div>
+            )}
+            {autenticado ? (
+              <div className="" onClick={handleOnClickModal}>
+                <FaUserAstronaut
+                  onClick={handleOnClickModal}
+                  className="icons-user"
+                />
+              </div>
+            ) : (
+              <div className="buttons-containers-user">
+                <button onClick={openModalLogin} className="button-login">
+                  <span>Login</span>
+                </button>
+
+                <button onClick={openModalRegistrarse}>
+                  <span>Registrarse</span>
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       )}
 
       <Modal sowModal={sowModal} setSowModal={setSowModal} className="modal">
