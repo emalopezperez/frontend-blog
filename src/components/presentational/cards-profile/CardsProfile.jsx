@@ -8,8 +8,6 @@ import postsContext from "../../../context/posts/postsContext";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { formatDate } from "../../../helpers/formatDate";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { MdDelete as IconDelete } from "react-icons/md";
 import { AiFillEdit, AiOutlineLink } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
 
@@ -62,21 +60,11 @@ const CardProfile = ({ post, imageSrc }) => {
     try {
       await deslikeArticlesUser(_id);
       setLiked(true);
+      setModalIsOpen(false);
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (isLiked) {
-      toast.success("Se eliminó el artículo guardado en tu perfil");
-      setModalIsOpen(false)
-      
-      setTimeout(() => {
-        window.location.reload();
-      }, 800);
-    }
-  }, [isLiked]);
 
   return (
     <section className="card-container">
@@ -110,7 +98,7 @@ const CardProfile = ({ post, imageSrc }) => {
             </div>
 
             <div className="buttons">
-              <div  className="">
+              <div className="">
                 <AiOutlineLink className="icons-buttons-modal" />
               </div>
               <span>Copiar enlace del articulo </span>
@@ -127,7 +115,7 @@ const CardProfile = ({ post, imageSrc }) => {
 
       <Toaster position="top-right" reverseOrder={false} />
       <Link to={`/articles/${_id}`}>
-        <article>
+        <article className="">
           <h6 className="categoria">{categoria}</h6>
           <img src={imageSrc} alt="blog" />
           <p className="contenido-card">

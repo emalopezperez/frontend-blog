@@ -3,7 +3,9 @@ import "./profile.css";
 import authContext from "../../../context/auth/authContext";
 import CardProfile from "../../presentational/cards-profile/CardsProfile";
 
+
 const ProfileContainer = () => {
+  
   const AuthContext = useContext(authContext);
   const { getUserLikes, likesUser, usuario } = AuthContext;
 
@@ -13,21 +15,19 @@ const ProfileContainer = () => {
 
   if (likesUser.length) {
     return (
-      <>
-        <div className=" container-profile-user">
-          <h2>Perfil de {usuario.nombre} Lopez </h2>
+      <div className=" container-profile-user">
+        <h2 className="text-2xl font-bold">Perfil de <span className="font-light text-gray-900">{usuario.nombre} Lopez</span>   </h2>
 
-          <div className="sub-title-profile-user">
-            <h3>Mis articulos guardados:</h3>
-          </div>
-
-          <div className="posts">
-            {likesUser.map((post) => (
-              <CardProfile post={post} key={post._id} imageSrc={post.imagen} />
-            ))}
-          </div>
+        <div className="sub-title-profile-user">
+          <h3 className="text-xl font-bold">Mis articulos guardados:</h3>
         </div>
-      </>
+
+        <div className="posts">
+          {likesUser.map((post) => (
+            <CardProfile post={post} key={post._id} imageSrc={post.imagen} />
+          ))}
+        </div>
+      </div>
     );
   }
 

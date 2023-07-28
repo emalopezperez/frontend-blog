@@ -28,10 +28,7 @@ const Filters = () => {
   return (
     <nav className="container-filters">
       <section className="category">
-        <button>All</button>
-        <button onClick={() => setFilter("Javascript")}>JavaScript</button>
-        <button onClick={() => setFilter("css")}>CSS</button>
-        <button onClick={() => setFilter("react")}>React</button>
+       
       </section>
 
       <div className="search-container">
