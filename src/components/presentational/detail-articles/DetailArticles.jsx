@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+
 import JoditEditor from "jodit-react";
 import "./detail-articles.css";
 import AsideDetailArticles from "../aside/AsideDetailArticles";
 import { formatDate } from "../../../helpers/formatDate";
-import { Element as ScrollElement } from "react-scroll";
 import { VscChevronDown, VscChevronRight } from "react-icons/vsc";
 
 const DetailArticles = ({ article, imageSrc }) => {
@@ -13,8 +12,6 @@ const DetailArticles = ({ article, imageSrc }) => {
   const [indice, setIndice] = useState([]);
   const [content, setContent] = useState("");
   const [modalAside, setModalAside] = useState(false);
-
-  const formattedDate = formatDate(fecha);
 
   useEffect(() => {
     window.scrollTo(0, 0);

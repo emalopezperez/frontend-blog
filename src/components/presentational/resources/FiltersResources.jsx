@@ -1,4 +1,5 @@
 import "./resources.css";
+import { Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import postsContext from "../../../context/posts/postsContext";
 
@@ -16,10 +17,12 @@ const FiltersResources = () => {
 
   return (
     <nav className="container-filter-resources">
-      <button onClick={() => setCategory("All")}>All</button>
+      <Link to="/recursos">
+        <button className="btn-back">All</button>
+      </Link>
+
       <button onClick={() => setCategory("Frontend")}>Frontendd</button>
       <button onClick={() => setCategory("Backend")}>Backend</button>
-      <button onClick={() => setCategory("Libros")}>Libros</button>
     </nav>
   );
 };

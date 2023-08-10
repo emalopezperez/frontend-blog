@@ -39,7 +39,7 @@
 
 /* Filter */
 .container-filter-resources {
-  width: 40%;
+  width: 25%;
   display: flex;
   justify-content: space-between;
 }
@@ -61,7 +61,6 @@
   background-color: transparent;
   color: black;
 }
-
 
 @media (max-width: 767px) {
   .container-filter-resources {
